@@ -1,4 +1,4 @@
-module test
+module gojira
 
 go 1.14
 
