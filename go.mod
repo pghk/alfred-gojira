@@ -3,7 +3,9 @@ module gojira
 go 1.14
 
 require (
+	github.com/coryb/oreo v0.0.0-20180804211640-3e1b88fc08f1
 	github.com/deanishe/awgo v0.29.1
+	github.com/dnaeon/go-vcr v1.2.0
 	github.com/go-jira/jira v1.0.28
 	github.com/gofrs/flock v0.0.0-20190320160742-5135e617513b // indirect
 	github.com/magefile/mage v1.12.1 // indirect
