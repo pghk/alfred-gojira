@@ -1,4 +1,4 @@
-module gojira
+module gojiralfredo
 
 go 1.14
 

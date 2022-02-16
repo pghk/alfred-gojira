@@ -1,2 +1,3 @@
-gojira
-test/test.log
+build/*
+!build/*.plist
+!build/*.png

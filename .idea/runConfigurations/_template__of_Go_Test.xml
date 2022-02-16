@@ -1,0 +1,17 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
+    <module name="context-gojira" />
+    <working_directory value="$PROJECT_DIR$" />
+    <go_parameters value="-i" />
+    <envs>
+      <env name="alfred_workflow_bundleid" value="test" />
+      <env name="alfred_workflow_cache" value="test" />
+      <env name="alfred_workflow_data" value="test" />
+    </envs>
+    <kind value="PACKAGE" />
+    <directory value="$PROJECT_DIR$" />
+    <filePath value="$PROJECT_DIR$" />
+    <framework value="gotest" />
+    <method v="2" />
+  </configuration>
+</component>

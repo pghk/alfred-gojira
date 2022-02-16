@@ -1,4 +1,4 @@
-package main
+package jira
 
 import (
 	"fmt"
@@ -11,7 +11,7 @@ import (
 
 func TestGetJira(t *testing.T) {
 	// Start test fixture recorder
-	vcr, err := recorder.New("testdata/fixtures/test")
+	vcr, err := recorder.New("../../test/_data/fixtures/list")
 	if err != nil {
 		t.Fatal(err)
 	}
