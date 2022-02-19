@@ -52,8 +52,14 @@ func runSet(key, value string) {
 
 	log.Printf("saving %#v to %s ...", value, key)
 
-	if err := wf.Config.Set(key, value, false).Do(); err != nil {
-		wf.FatalError(err)
+	if key == "API_TOKEN" {
+		if err := wf.Keychain.Set(srv.Hostname, value); err != nil {
+			wf.FatalError(err)
+		}
+	} else {
+		if err := wf.Config.Set(key, value, false).Do(); err != nil {
+			wf.FatalError(err)
+		}
 	}
 
 	if err := wf.Alfred.RunTrigger("settings", ""); err != nil {
@@ -70,6 +76,8 @@ func runGet(key, value string) {
 	if value != "" {
 		var varname string
 		switch key {
+		case "API token":
+			varname = "API_TOKEN"
 		case "hostname":
 			varname = "HOSTNAME"
 		case "username":
@@ -135,6 +143,20 @@ func run() {
 		Subtitle("↩ to edit").
 		Valid(true).
 		Var("name", "username")
+
+	_, err := wf.Keychain.Get(srv.Hostname)
+	if err != nil {
+		wf.NewItem("API token: not set").
+			Subtitle("↩ to add to Keychain").
+			Valid(true).
+			Var("name", "API token")
+	} else {
+		wf.NewItem("API token: set in macOS Keychain").
+			Subtitle("↩ to edit in keychain").
+			Valid(true).
+			Var("name", "API token")
+	}
+
 
 	if query != "" {
 		wf.Filter(query)
