@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/coryb/oreo"
 	"github.com/dnaeon/go-vcr/recorder"
 	"gojiralfredo/internal/jira-client"
@@ -35,11 +36,36 @@ func shutdown(vcr *recorder.Recorder) {
 }
 
 func TestRunQuery(t *testing.T) {
+	query.MaxResults = 20
+	query.Project = "JRACLOUD"
+	query.Sort = "assignee"
+
 	got := runQuery()
 	//fmt.Println(got.Issues[0])
 	if got.Total <= 0  {
-		t.Errorf("Received %q results", got.Total)
+		t.Errorf("Received %d results", got.Total)
 	}
+
+	fieldChecks := []struct {
+		name string
+		field string
+	}{
+		{"Summary", "summary"},
+		{"Issue Type", "issuetype"},
+		{"Status", "status"},
+		{"Assignee", "assignee"},
+	}
+	for _, tt := range fieldChecks {
+		t.Run(fmt.Sprintf("Contains%sField", tt.name), func(t *testing.T) {
+			for _, issue := range got.Issues {
+				_, ok := issue.Fields[tt.field]
+				if !ok {
+					t.Fatalf("Issue doesn't contain %s field", tt.name)
+				}
+			}
+		})
+	}
+
 }
 
 func TestMain(m *testing.M) {

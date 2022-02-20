@@ -1,3 +1,4 @@
 build/*
 !build/*.plist
 !build/*.png
+test.log

@@ -2,7 +2,6 @@ package jira
 
 import (
 	"github.com/go-jira/jira"
-	"github.com/go-jira/jira/jiradata"
 )
 
 type Client struct {
@@ -11,10 +10,6 @@ type Client struct {
 
 type Query struct {
 	*jira.SearchOptions
-}
-
-type Results struct {
-	jiradata.SearchResults
 }
 
 func BuildQuery() *Query {
