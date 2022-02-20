@@ -5,17 +5,22 @@ import (
 	"github.com/go-jira/jira/jiradata"
 )
 
-func BuildClient() *jira.Jira {
-	return jira.NewJira("https://jira.atlassian.com")
+type Client struct {
+	*jira.Jira
 }
 
-func ListIssues() (*jiradata.SearchResults, error) {
-	return GetJiraList(*BuildClient())
+type Query struct {
+	*jira.SearchOptions
 }
 
-func GetJiraList(j jira.Jira) (*jiradata.SearchResults, error) {
-	o := &jira.SearchOptions{Project: "JRACLOUD"}
-	return j.Search(o)
+type Results struct {
+	jiradata.SearchResults
 }
 
+func BuildQuery() *Query {
+	return &Query{&jira.SearchOptions{}}
+}
 
+func BuildClient(endpoint string) *Client {
+	return &Client{jira.NewJira(endpoint)}
+}

@@ -1,0 +1,171 @@
+---
+version: 1
+interactions:
+- request:
+    body: '{"fields":["summary"],"jql":"resolution = unresolved","maxResults":100}'
+    form: {}
+    headers:
+      Content-Type:
+      - application/json
+    url: https://jira.atlassian.com/rest/api/2/search
+    method: POST
+  response:
+    body: '{"expand":"schema,names","startAt":0,"maxResults":100,"total":58469,"issues":[{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1857091","self":"https://jira.atlassian.com/rest/api/2/issue/1857091","key":"SRCTREEWIN-13787","fields":{"summary":"Default
+      for Production branch in GitFlow should be main not master"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1856992","self":"https://jira.atlassian.com/rest/api/2/issue/1856992","key":"SRCTREEWIN-13786","fields":{"summary":"OAuth
+      Fails, Unable to get Secret"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1855509","self":"https://jira.atlassian.com/rest/api/2/issue/1855509","key":"SRCTREEWIN-13784","fields":{"summary":"Launch
+      SSH agent fails code -1 with system git and OpenSSH"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1855057","self":"https://jira.atlassian.com/rest/api/2/issue/1855057","key":"SRCTREEWIN-13783","fields":{"summary":"case
+      sensitivity"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1854676","self":"https://jira.atlassian.com/rest/api/2/issue/1854676","key":"SRCTREEWIN-13782","fields":{"summary":"Sourcetree
+      error: Too many invalid password attempts. The requested URL returned error:
+      403"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1854539","self":"https://jira.atlassian.com/rest/api/2/issue/1854539","key":"SRCTREEWIN-13779","fields":{"summary":"Typing
+      Commit Messages"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1854452","self":"https://jira.atlassian.com/rest/api/2/issue/1854452","key":"SRCTREEWIN-13776","fields":{"summary":"ssh-agent.exe
+      taks to much CPU"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1854027","self":"https://jira.atlassian.com/rest/api/2/issue/1854027","key":"SRCTREEWIN-13774","fields":{"summary":"Local
+      Repositories  Bookmark Bar does not refresh"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1853496","self":"https://jira.atlassian.com/rest/api/2/issue/1853496","key":"SRCTREEWIN-13773","fields":{"summary":"Force
+      push on repository with submodules does not work"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1853282","self":"https://jira.atlassian.com/rest/api/2/issue/1853282","key":"SRCTREEWIN-13772","fields":{"summary":"Stash
+      view should show dates"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1852274","self":"https://jira.atlassian.com/rest/api/2/issue/1852274","key":"SRCTREEWIN-13771","fields":{"summary":"Clone
+      crash when I put URL with SourceTree V3.4.7"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1849451","self":"https://jira.atlassian.com/rest/api/2/issue/1849451","key":"SRCTREEWIN-13767","fields":{"summary":"branches
+      checked out in different worktree not shown in the left panel"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1847394","self":"https://jira.atlassian.com/rest/api/2/issue/1847394","key":"SRCTREEWIN-13766","fields":{"summary":"Stashes
+      diff view only show one file"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1846787","self":"https://jira.atlassian.com/rest/api/2/issue/1846787","key":"SRCTREEWIN-13764","fields":{"summary":"Source
+      Tree overlapping Taskbar Windows 11"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1846087","self":"https://jira.atlassian.com/rest/api/2/issue/1846087","key":"SRCTREEWIN-13763","fields":{"summary":"Accounts
+      for remote repo fails to connect "}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1845502","self":"https://jira.atlassian.com/rest/api/2/issue/1845502","key":"SRCTREEWIN-13762","fields":{"summary":"can
+      not access repositories, authentication always fails"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1845162","self":"https://jira.atlassian.com/rest/api/2/issue/1845162","key":"SRCTREEWIN-13761","fields":{"summary":"Authentication
+      Failed - Unable to resolve"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1844069","self":"https://jira.atlassian.com/rest/api/2/issue/1844069","key":"SRCTREEWIN-13760","fields":{"summary":"http.proxy
+      set to www.google.com:80 when set proxy to OS default"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1843729","self":"https://jira.atlassian.com/rest/api/2/issue/1843729","key":"SRCTREEWIN-13759","fields":{"summary":"Please
+      make warning LESS SCARY about a detached head"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1843575","self":"https://jira.atlassian.com/rest/api/2/issue/1843575","key":"SRCTREEWIN-13758","fields":{"summary":"Bug
+      in listing bitbucket repos"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1843552","self":"https://jira.atlassian.com/rest/api/2/issue/1843552","key":"SRCTREEWIN-13757","fields":{"summary":"Spaces
+      in File path of Custom Action"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1843397","self":"https://jira.atlassian.com/rest/api/2/issue/1843397","key":"SRCTREEWIN-13756","fields":{"summary":"Failed
+      to start (System.BadImageFormatException)"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1842733","self":"https://jira.atlassian.com/rest/api/2/issue/1842733","key":"SRCTREEWIN-13755","fields":{"summary":"commit
+      view show in branchs"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1842635","self":"https://jira.atlassian.com/rest/api/2/issue/1842635","key":"SRCTREEWIN-13754","fields":{"summary":"Add
+      extended integration with Team Foundation Server (TFS) 2015 and Visual Studio
+      Online"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1842558","self":"https://jira.atlassian.com/rest/api/2/issue/1842558","key":"SRCTREEWIN-13753","fields":{"summary":"Sourcetree
+      is using /2.0/teams endpoint to fetch list of repositories user has access to"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1841594","self":"https://jira.atlassian.com/rest/api/2/issue/1841594","key":"SRCTREEWIN-13752","fields":{"summary":"git.exe
+      fsmonitor process did not exit after close sourcetree "}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1841571","self":"https://jira.atlassian.com/rest/api/2/issue/1841571","key":"SRCTREEWIN-13751","fields":{"summary":"Crash
+      when clone remote EMPTY (private) GitHUB repository"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1841166","self":"https://jira.atlassian.com/rest/api/2/issue/1841166","key":"SRCTREEWIN-13749","fields":{"summary":"Log
+      4j vulnerability"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1841114","self":"https://jira.atlassian.com/rest/api/2/issue/1841114","key":"SRCTREEWIN-13748","fields":{"summary":"SourceTree\\app-3.4.7\\log4net.dll"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1839667","self":"https://jira.atlassian.com/rest/api/2/issue/1839667","key":"SRCTREEWIN-13747","fields":{"summary":"Sourcetree
+      Graphics Problems"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1839311","self":"https://jira.atlassian.com/rest/api/2/issue/1839311","key":"SRCTREEWIN-13746","fields":{"summary":"Sourcetree
+      crash on startup"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1838827","self":"https://jira.atlassian.com/rest/api/2/issue/1838827","key":"SRCTREEWIN-13745","fields":{"summary":"Sourcetree
+      Stop during Clone -> advanced setting "}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1838408","self":"https://jira.atlassian.com/rest/api/2/issue/1838408","key":"SRCTREEWIN-13743","fields":{"summary":"SourceTree
+      doesn''t support GBK encoding format files."}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1838204","self":"https://jira.atlassian.com/rest/api/2/issue/1838204","key":"SRCTREEWIN-13742","fields":{"summary":"Multiple
+      keys with same alias."}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1838232","self":"https://jira.atlassian.com/rest/api/2/issue/1838232","key":"SRCTREEWIN-13741","fields":{"summary":"Source
+      Tree is Crashing without any message while cloning remote repository."}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1838131","self":"https://jira.atlassian.com/rest/api/2/issue/1838131","key":"SRCTREEWIN-13740","fields":{"summary":"Add
+      ability to copy list of file from commit and url for commit"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1838116","self":"https://jira.atlassian.com/rest/api/2/issue/1838116","key":"SRCTREEWIN-13739","fields":{"summary":"Make
+      Linux version available"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1837464","self":"https://jira.atlassian.com/rest/api/2/issue/1837464","key":"SRCTREEWIN-13738","fields":{"summary":"Errors
+      During Installation"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1836788","self":"https://jira.atlassian.com/rest/api/2/issue/1836788","key":"SRCTREEWIN-13737","fields":{"summary":"Folder
+      icons for Local repositories overlap text"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1836019","self":"https://jira.atlassian.com/rest/api/2/issue/1836019","key":"SRCTREEWIN-13736","fields":{"summary":"Cannot
+      Remove Keys from SSH Agent"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1835788","self":"https://jira.atlassian.com/rest/api/2/issue/1835788","key":"SRCTREEWIN-13735","fields":{"summary":"Versionstring
+      not update after auto-update"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1835814","self":"https://jira.atlassian.com/rest/api/2/issue/1835814","key":"SRCTREEWIN-13734","fields":{"summary":"Cloning
+      a repository that doesn''t contain any branch and commit crashes the app"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1835623","self":"https://jira.atlassian.com/rest/api/2/issue/1835623","key":"SRCTREEWIN-13733","fields":{"summary":"Denial
+      of service when cloning an empty git repository"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1834928","self":"https://jira.atlassian.com/rest/api/2/issue/1834928","key":"SRCTREEWIN-13732","fields":{"summary":"graphic
+      artifacts"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1834454","self":"https://jira.atlassian.com/rest/api/2/issue/1834454","key":"SRCTREEWIN-13731","fields":{"summary":"Error
+      at cloning Repository "}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1834416","self":"https://jira.atlassian.com/rest/api/2/issue/1834416","key":"SRCTREEWIN-13730","fields":{"summary":"Sourcetree
+      crashes when trying to pull a repository (after  being recognized as a valid
+      git repository)"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1834042","self":"https://jira.atlassian.com/rest/api/2/issue/1834042","key":"SRCTREEWIN-13729","fields":{"summary":"Userpics
+      in commits"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1834134","self":"https://jira.atlassian.com/rest/api/2/issue/1834134","key":"SRCTREEWIN-13728","fields":{"summary":"SourceTree
+      crashes while trying to clone empty repository"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1833836","self":"https://jira.atlassian.com/rest/api/2/issue/1833836","key":"SRCTREEWIN-13727","fields":{"summary":"Update-Dialog
+      unreadable in Dark-mode"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1833401","self":"https://jira.atlassian.com/rest/api/2/issue/1833401","key":"SRCTREEWIN-13726","fields":{"summary":"SourceTree
+      doesn''t open nor reinstall (after Windows 10 Update)"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1832696","self":"https://jira.atlassian.com/rest/api/2/issue/1832696","key":"SRCTREEWIN-13725","fields":{"summary":"Diff
+      view: Show whitespace should display a different symbol for tabs"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1832573","self":"https://jira.atlassian.com/rest/api/2/issue/1832573","key":"SRCTREEWIN-13724","fields":{"summary":"In
+      Windows 11 environment, minimizing the program and maximizing the program again
+      will cause the page to crash"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1832394","self":"https://jira.atlassian.com/rest/api/2/issue/1832394","key":"SRCTREEWIN-13723","fields":{"summary":"unable
+      to use sourcetree"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1832543","self":"https://jira.atlassian.com/rest/api/2/issue/1832543","key":"SRCTREEWIN-13722","fields":{"summary":"Choosing
+      resolve using mine asks me to confirm that I want to resolve using theirs"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1832257","self":"https://jira.atlassian.com/rest/api/2/issue/1832257","key":"SRCTREEWIN-13721","fields":{"summary":"V3.4.6
+      crashes in Clone dialog"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1831765","self":"https://jira.atlassian.com/rest/api/2/issue/1831765","key":"SRCTREEWIN-13720","fields":{"summary":"Issues
+      when trtying to Authenticate. "}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1831238","self":"https://jira.atlassian.com/rest/api/2/issue/1831238","key":"SRCTREEWIN-13719","fields":{"summary":"Issue
+      with local repositories and tabs at startup"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1831057","self":"https://jira.atlassian.com/rest/api/2/issue/1831057","key":"SRCTREEWIN-13717","fields":{"summary":"Issue
+      with local repositories and tabs at startup"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1829721","self":"https://jira.atlassian.com/rest/api/2/issue/1829721","key":"SRCTREEWIN-13715","fields":{"summary":"Graphics
+      issues when mousing over the interface"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1829167","self":"https://jira.atlassian.com/rest/api/2/issue/1829167","key":"SRCTREEWIN-13714","fields":{"summary":"Pin
+      Favourite Files in SourceTree"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1829069","self":"https://jira.atlassian.com/rest/api/2/issue/1829069","key":"SRCTREEWIN-13713","fields":{"summary":"Buttons
+      getting disappeared.. while I hover on commit,pull,fetch,stash.."}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1823094","self":"https://jira.atlassian.com/rest/api/2/issue/1823094","key":"SRCTREEWIN-13712","fields":{"summary":"Unable
+      to stage files or trunks when accented letters are present in the code"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1821703","self":"https://jira.atlassian.com/rest/api/2/issue/1821703","key":"SRCTREEWIN-13711","fields":{"summary":"[Major
+      Annoying] Fix index position is reset in the list of Unstaged Files"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1821769","self":"https://jira.atlassian.com/rest/api/2/issue/1821769","key":"SRCTREEWIN-13710","fields":{"summary":"Sourcetree
+      does not let me push to remote branch from by local branch"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1821625","self":"https://jira.atlassian.com/rest/api/2/issue/1821625","key":"SRCTREEWIN-13709","fields":{"summary":"Cannot
+      login during app start - webpage is down"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1818946","self":"https://jira.atlassian.com/rest/api/2/issue/1818946","key":"SRCTREEWIN-13708","fields":{"summary":"Track
+      of \"Clean\" files doesn''t work"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1817180","self":"https://jira.atlassian.com/rest/api/2/issue/1817180","key":"SRCTREEWIN-13707","fields":{"summary":"\"Clear
+      all changes\" button"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1816649","self":"https://jira.atlassian.com/rest/api/2/issue/1816649","key":"SRCTREEWIN-13706","fields":{"summary":"Visually
+      and consistently distinguish the \"main\" branch"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1815158","self":"https://jira.atlassian.com/rest/api/2/issue/1815158","key":"SRCTREEWIN-13705","fields":{"summary":"Text
+      unreadable on password edit dialog in dark theme"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1813999","self":"https://jira.atlassian.com/rest/api/2/issue/1813999","key":"SRCTREEWIN-13704","fields":{"summary":"Commit
+      button will not commit when adding a file"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1814030","self":"https://jira.atlassian.com/rest/api/2/issue/1814030","key":"SRCTREEWIN-13703","fields":{"summary":"I
+      hope you can add the function of jumping to the corresponding submission according
+      to the \"Sha value\" in the submission description"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1813934","self":"https://jira.atlassian.com/rest/api/2/issue/1813934","key":"SRCTREEWIN-13702","fields":{"summary":"Crash
+      on editing remote"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1804441","self":"https://jira.atlassian.com/rest/api/2/issue/1804441","key":"SRCTREEWIN-13701","fields":{"summary":"Stash
+      + \"Keep staged changes\" does not keep changes"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1799948","self":"https://jira.atlassian.com/rest/api/2/issue/1799948","key":"SRCTREEWIN-13697","fields":{"summary":"Discarding
+      multiple unstaged files consumes too much memory"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1797993","self":"https://jira.atlassian.com/rest/api/2/issue/1797993","key":"SRCTREEWIN-13696","fields":{"summary":"Sourcetree
+      is shipping outdated putty binaries"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1797740","self":"https://jira.atlassian.com/rest/api/2/issue/1797740","key":"SRCTREEWIN-13695","fields":{"summary":"Move
+      existing tag always fails with error"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1797319","self":"https://jira.atlassian.com/rest/api/2/issue/1797319","key":"SRCTREEWIN-13694","fields":{"summary":"End
+      the program when cloning from empty remote repository."}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1796736","self":"https://jira.atlassian.com/rest/api/2/issue/1796736","key":"SRCTREEWIN-13689","fields":{"summary":"Commit
+      message enhancement"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1796718","self":"https://jira.atlassian.com/rest/api/2/issue/1796718","key":"SRCTREEWIN-13688","fields":{"summary":"Open
+      local repository by drag & drop does not work since 3.4.2"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1796529","self":"https://jira.atlassian.com/rest/api/2/issue/1796529","key":"SRCTREEWIN-13687","fields":{"summary":"Can''t
+      install sourceTree v. 1.9.13.7 "}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1796222","self":"https://jira.atlassian.com/rest/api/2/issue/1796222","key":"SRCTREEWIN-13686","fields":{"summary":"Context
+      menu options disappear, font is blurry"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1794586","self":"https://jira.atlassian.com/rest/api/2/issue/1794586","key":"SRCTREEWIN-13681","fields":{"summary":"Increase
+      the size of this button"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1794578","self":"https://jira.atlassian.com/rest/api/2/issue/1794578","key":"SRCTREEWIN-13680","fields":{"summary":"Unable
+      to Run/Re-install Sourcetree - \"Sourcetree has stopped working\""}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1794308","self":"https://jira.atlassian.com/rest/api/2/issue/1794308","key":"SRCTREEWIN-13678","fields":{"summary":"Source
+      Tree for windows - v3.4.5:  security Vulnerability CVE-2018-1285 for log4net"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1791529","self":"https://jira.atlassian.com/rest/api/2/issue/1791529","key":"SRCTREEWIN-13677","fields":{"summary":"【crash】Cloning
+      a newly created Gitlib project without branches or files sourcetree will crash"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1791534","self":"https://jira.atlassian.com/rest/api/2/issue/1791534","key":"SRCTREEWIN-13676","fields":{"summary":"【crash】Cloning
+      a newly created Gitlib project without branches or files sourcetree will crash"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1780199","self":"https://jira.atlassian.com/rest/api/2/issue/1780199","key":"SRCTREEWIN-13674","fields":{"summary":"Identification"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1776784","self":"https://jira.atlassian.com/rest/api/2/issue/1776784","key":"SRCTREEWIN-13672","fields":{"summary":"Context
+      Menü on Files very unresponsive when LFS is activated on Repository"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1776739","self":"https://jira.atlassian.com/rest/api/2/issue/1776739","key":"SRCTREEWIN-13671","fields":{"summary":"Resolve
+      the problem with github OAuth authentification"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1776924","self":"https://jira.atlassian.com/rest/api/2/issue/1776924","key":"SRCTREEWIN-13670","fields":{"summary":"GUI
+      glitch for many buttons"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1775875","self":"https://jira.atlassian.com/rest/api/2/issue/1775875","key":"SRCTREEWIN-13669","fields":{"summary":"Tab
+      (bar) position"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1775823","self":"https://jira.atlassian.com/rest/api/2/issue/1775823","key":"SRCTREEWIN-13668","fields":{"summary":"Closing
+      a branch with one commit does not create a new commit"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1773074","self":"https://jira.atlassian.com/rest/api/2/issue/1773074","key":"SRCTREEWIN-13666","fields":{"summary":"SourceTree
+      Auto off"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1773130","self":"https://jira.atlassian.com/rest/api/2/issue/1773130","key":"SRCTREEWIN-13665","fields":{"summary":"We
+      use virustotal find sourcetree 3.4.5 has Trojan Horse on it"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1773043","self":"https://jira.atlassian.com/rest/api/2/issue/1773043","key":"SRCTREEWIN-13664","fields":{"summary":"Decode
+      URL-encoded characters when cloning a Git repository"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1771391","self":"https://jira.atlassian.com/rest/api/2/issue/1771391","key":"SRCTREEWIN-13662","fields":{"summary":"Maximized
+      window under taskbar"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1770889","self":"https://jira.atlassian.com/rest/api/2/issue/1770889","key":"SRCTREEWIN-13660","fields":{"summary":"Remote
+      option in source tree not working when click on that your windows source tree
+      application crash "}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1770958","self":"https://jira.atlassian.com/rest/api/2/issue/1770958","key":"SRCTREEWIN-13658","fields":{"summary":"Force
+      push fails silently"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1770603","self":"https://jira.atlassian.com/rest/api/2/issue/1770603","key":"SRCTREEWIN-13657","fields":{"summary":"Patch-based
+      staging (hunk, line) fails for non-UTF8 encoded files"}},{"expand":"operations,versionedRepresentations,editmeta,changelog,renderedFields","id":"1770826","self":"https://jira.atlassian.com/rest/api/2/issue/1770826","key":"SRCTREEWIN-13656","fields":{"summary":"Application
+      crashes silently when opening a local repository, while running without admin
+      privliges"}}]}'
+    headers:
+      Atl-Traceid:
+      - 386d449e767b454c
+      Cache-Control:
+      - no-cache, no-store, no-transform
+      Content-Security-Policy:
+      - sandbox
+      Content-Type:
+      - application/json;charset=UTF-8
+      Date:
+      - Sun, 20 Feb 2022 03:46:36 GMT
+      Expect-Ct:
+      - report-uri="https://web-security-reports.services.atlassian.com/expect-ct-report/jac-gedgev2",
+        max-age=86400
+      Nel:
+      - '{"report_to": "endpoint-1", "max_age": 600, "include_subdomains": true, "failure_fraction":
+        0.001}'
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Report-To:
+      - '{"group": "endpoint-1", "max_age": 600, "endpoints": [{"url": "https://dj9s4kmieytgz.cloudfront.net"}],
+        "include_subdomains": true}'
+      Server:
+      - globaledge-envoy
+      Set-Cookie:
+      - AWSALB=RGbXs5FIppaf9PcM89XEqo5J9aoc+2lJcGe4NWFt00o3wXb6Jg7e474ozYA7VTVDBHW1fUjDZPQ+YFJjnP1gUXQu6VKJNSRJU7+y0WCM7l1H3gRBGpFBxq0qAIoE;
+        Expires=Sun, 27 Feb 2022 03:46:36 GMT; Path=/
+      - AWSALBCORS=RGbXs5FIppaf9PcM89XEqo5J9aoc+2lJcGe4NWFt00o3wXb6Jg7e474ozYA7VTVDBHW1fUjDZPQ+YFJjnP1gUXQu6VKJNSRJU7+y0WCM7l1H3gRBGpFBxq0qAIoE;
+        Expires=Sun, 27 Feb 2022 03:46:36 GMT; Path=/; SameSite=None
+      - JSESSIONID=F644484133637107EB1609F8AEA429C1; Path=/; Secure; HttpOnly
+      - atlassian.xsrf.token=AKVY-YUFR-9LM7-97AB_aeb7ce870622146690b9c8d56d7b33a602fa2410_lout;
+        Path=/; Secure
+      Strict-Transport-Security:
+      - max-age=63072000; preload
+      X-Anodeid:
+      - i-06fcde5b3db94bd43-ipp-10.226.29.166
+      X-Arequestid:
+      - 226x8002599x1
+      X-Asessionid:
+      - 609mjl
+      X-Ausername:
+      - anonymous
+      X-Content-Type-Options:
+      - nosniff
+      X-Envoy-Upstream-Service-Time:
+      - "103"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+    status: 200 OK
+    code: 200
+    duration: ""

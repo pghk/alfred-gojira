@@ -407,6 +407,15 @@ variables={allvars}
 			<integer>65</integer>
 		</dict>
 	</dict>
+	<key>variables</key>
+	<dict>
+		<key>USERNAME</key>
+		<string>okay</string>
+	</dict>
+	<key>variablesdontexport</key>
+	<array>
+		<string>USERNAME</string>
+	</array>
 	<key>webaddress</key>
 	<string></string>
 </dict>
