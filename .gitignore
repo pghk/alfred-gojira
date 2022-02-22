@@ -1,4 +1,6 @@
-build/*
-!build/*.plist
-!build/*.png
-test.log
+build
+_data
+!_data/fixtures/*
+_cache
+*.log
+

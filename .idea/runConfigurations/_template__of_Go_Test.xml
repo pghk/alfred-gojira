@@ -4,9 +4,9 @@
     <working_directory value="$PROJECT_DIR$" />
     <go_parameters value="-i" />
     <envs>
-      <env name="alfred_workflow_bundleid" value="test" />
-      <env name="alfred_workflow_cache" value="test" />
-      <env name="alfred_workflow_data" value="test" />
+      <env name="alfred_workflow_bundleid" value="com.pghk.gojira-test" />
+      <env name="alfred_workflow_cache" value="_cache" />
+      <env name="alfred_workflow_data" value="_data" />
     </envs>
     <kind value="PACKAGE" />
     <directory value="$PROJECT_DIR$" />
