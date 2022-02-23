@@ -4,9 +4,8 @@ import (
 	"encoding/base64"
 	"fmt"
 	"github.com/coryb/oreo"
-	aw "github.com/deanishe/awgo"
 	"github.com/go-jira/jira"
-	"log"
+	"gojiralfredo/internal/workflow"
 	"net/http"
 )
 
@@ -18,34 +17,7 @@ type Query struct {
 	*jira.SearchOptions
 }
 
-type Auth struct {
-	Username string
-	Password string
-}
-
-func GetCredentials(wf *aw.Workflow) Auth {
-	tokenID := "jira.atlassian.com"
-	if wf.Config.Get("HOSTNAME") != "" {
-		tokenID = wf.Config.Get("HOSTNAME")
-	}
-
-	username := "test"
-	if wf.Config.Get("USERNAME") != "" {
-		username = wf.Config.Get("USERNAME")
-	}
-
-	token, err := wf.Keychain.Get(tokenID)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	return Auth{
-		Username: username,
-		Password: token,
-	}
-}
-
-func BuildClient(auth Auth) *oreo.Client {
+func BuildClient(auth workflow.Auth) *oreo.Client {
 	rawAuth := fmt.Sprintf("%s:%s", auth.Username, auth.Password)
 	encodedAuth := fmt.Sprintf("Basic %s", base64.StdEncoding.EncodeToString([]byte(rawAuth)))
 	return oreo.New().WithPreCallback(func(req *http.Request) (*http.Request, error) {

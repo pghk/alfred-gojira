@@ -7,6 +7,7 @@ import (
 	"gojiralfredo/internal/jira-client"
 	"gojiralfredo/internal/workflow"
 	"log"
+	"strings"
 )
 
 var (
@@ -19,12 +20,9 @@ var (
 
 func init() {
 	wf = aw.New()
-	hostname = "jira.atlassian.com"
-	if wf.Config.Get("HOSTNAME") != "" {
-		hostname = wf.Config.Get("HOSTNAME")
-	}
+	hostname = workflow.GetJiraHostname(wf)
 	query = *jira.BuildQuery()
-	client = jira.BuildClient(jira.GetCredentials(wf))
+	client = jira.BuildClient(workflow.GetCredentials(wf))
 	setConsumer()
 }
 
@@ -37,8 +35,19 @@ func setConsumer() {
 }
 
 func runQuery() *jiradata.SearchResults {
-	query.QueryFields = "assignee,created,priority,reporter,status,summary,updated,issuetype"
-	query.Project = "RAV"
+	query.QueryFields = strings.Join([]string{
+		"assignee",
+		"created",
+		"priority",
+		"status",
+		"summary",
+		"updated",
+		"issuetype",
+	},",")
+
+	if wf.Config.Get("Project") != "" {
+		query.Project = wf.Config.Get("Project")
+	}
 	query.Sort = "priority desc, key desc"
 
 

@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/dnaeon/go-vcr/recorder"
 	"gojiralfredo/internal/jira-client"
+	"gojiralfredo/internal/workflow"
 	"log"
 	"os"
 	"testing"
@@ -17,7 +18,7 @@ func setup() *recorder.Recorder {
 	}
 
 	// Create an instance of the http client the go-jira library normally uses, injected with our recorder
-	spyClient := jira.BuildClient(jira.Auth{
+	spyClient := jira.BuildClient(workflow.Auth{
 		Username: "testing",
 		Password: "hello this is password",
 	})
