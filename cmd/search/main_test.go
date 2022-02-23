@@ -21,7 +21,7 @@ func setup() *recorder.Recorder {
 	spyClient := jira.BuildClient(workflow.Auth{
 		Username: "testing",
 		Password: "hello this is password",
-	})
+	}, false, true)
 	spyClient.Client.Transport = vcr
 
 	// Inject our modified client into the new instance provided by the go-jira library

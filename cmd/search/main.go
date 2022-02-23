@@ -22,7 +22,7 @@ func init() {
 	wf = aw.New()
 	hostname = workflow.GetJiraHostname(wf)
 	query = *jira.BuildQuery()
-	client = jira.BuildClient(workflow.GetCredentials(wf))
+	client = jira.BuildClient(workflow.GetCredentials(wf), true, false)
 	setConsumer()
 }
 

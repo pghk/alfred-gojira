@@ -17,13 +17,34 @@ type Query struct {
 	*jira.SearchOptions
 }
 
-func BuildClient(auth workflow.Auth) *oreo.Client {
+type Logger struct {}
+
+func (l *Logger) Printf(format string, args ...interface{}) {
+	fmt.Printf(format, args...)
+}
+
+var logger = Logger{}
+
+func BuildClient(auth workflow.Auth, authorize bool, log bool) *oreo.Client {
 	rawAuth := fmt.Sprintf("%s:%s", auth.Username, auth.Password)
-	encodedAuth := fmt.Sprintf("Basic %s", base64.StdEncoding.EncodeToString([]byte(rawAuth)))
-	return oreo.New().WithPreCallback(func(req *http.Request) (*http.Request, error) {
-		req.Header.Add("Authorization", encodedAuth)
-		return req, nil
-	})
+	encodedAuth := base64.StdEncoding.EncodeToString([]byte(rawAuth))
+	authHeaderVal := fmt.Sprintf("Basic %s", encodedAuth)
+
+	client := oreo.New()
+
+	if authorize {
+		client = client.
+			WithPreCallback(func(req *http.Request) (*http.Request, error) {
+			req.Header.Add("Authorization", authHeaderVal)
+			return req, nil
+		})
+	}
+
+	if log {
+		client = client.WithLogger(&logger).WithTrace(true)
+	}
+
+	return client
 }
 
 func BuildQuery() *Query {
