@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"github.com/coryb/oreo"
 	"github.com/dnaeon/go-vcr/recorder"
 	"gojiralfredo/internal/jira-client"
 	"log"
@@ -18,12 +17,15 @@ func setup() *recorder.Recorder {
 	}
 
 	// Create an instance of the http client the go-jira library normally uses, injected with our recorder
-	recordingHttpClient := oreo.New()
-	recordingHttpClient.Client.Transport = vcr
+	spyClient := jira.BuildClient(jira.Auth{
+		Username: "testing",
+		Password: "hello this is password",
+	})
+	spyClient.Client.Transport = vcr
 
 	// Inject our modified client into the new instance provided by the go-jira library
-	client = *jira.BuildClient("https://jira.atlassian.com")
-	client.UA = recordingHttpClient
+	setClient(spyClient)
+	setConsumer()
 
 	return vcr
 }

@@ -6,6 +6,8 @@ interactions:
       = unresolved AND project = ''JRACLOUD'' ORDER BY assignee","maxResults":20}'
     form: {}
     headers:
+      Auth:
+      - Basic dGVzdGluZzpoZWxsbyB0aGlzIGlzIHBhc3N3b3Jk
       Content-Type:
       - application/json
     url: https://jira.atlassian.com/rest/api/2/search
