@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"github.com/coryb/oreo"
 	aw "github.com/deanishe/awgo"
 	"github.com/go-jira/jira/jiradata"
@@ -45,10 +46,12 @@ func runQuery() (*jiradata.SearchResults, error) {
 		"issuetype",
 	},",")
 
+	query.MaxResults = 200
+
 	if wf.Config.Get("Project") != "" {
 		query.Project = wf.Config.Get("Project")
 	}
-	query.Sort = "priority desc, key desc"
+	query.Sort = "updated desc, sprint desc, priority desc, key desc"
 
 	return consumer.Search(&query)
 }
@@ -65,7 +68,13 @@ func parseResults() {
 }
 
 func run() {
+	wf.Args()
+	flag.Parse()
+	query := flag.Arg(0)
 	parseResults()
+	if query != "" {
+		wf.Filter(query)
+	}
 	wf.SendFeedback()
 }
 
