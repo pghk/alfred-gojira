@@ -34,7 +34,7 @@ func setConsumer() {
 	consumer = *jira.BuildConsumer("https://" + hostname, client)
 }
 
-func runQuery() *jiradata.SearchResults {
+func runQuery() (*jiradata.SearchResults, error) {
 	query.QueryFields = strings.Join([]string{
 		"assignee",
 		"created",
@@ -50,17 +50,15 @@ func runQuery() *jiradata.SearchResults {
 	}
 	query.Sort = "priority desc, key desc"
 
-
-	results, err := consumer.Search(&query)
-	if err != nil {
-		log.Fatal(err)
-	}
-	return results
+	return consumer.Search(&query)
 }
 
 func parseResults() {
-	results := runQuery().Issues
-	for _, issue := range results {
+	results, err := runQuery()
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, issue := range results.Issues {
 		workflow.Add(issue, wf)
 	}
 

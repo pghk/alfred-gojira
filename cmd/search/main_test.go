@@ -1,18 +1,21 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
+	"github.com/dnaeon/go-vcr/cassette"
 	"github.com/dnaeon/go-vcr/recorder"
+	"github.com/go-jira/jira/jiradata"
 	"gojiralfredo/internal/jira-client"
 	"gojiralfredo/internal/workflow"
 	"log"
-	"os"
+	"net/http"
 	"testing"
 )
 
-func setup() *recorder.Recorder {
+func setup(name string, withAuthorization bool, withLog bool) *recorder.Recorder {
 	// Start test fixture recorder
-	vcr, err := recorder.New("../../test/_data/fixtures/search")
+	vcr, err := recorder.New("../../test/_data/fixtures/" + name)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -21,7 +24,7 @@ func setup() *recorder.Recorder {
 	spyClient := jira.BuildClient(workflow.Auth{
 		Username: "testing",
 		Password: "hello this is password",
-	}, false, true)
+	}, withAuthorization, withLog)
 	spyClient.Client.Transport = vcr
 
 	// Inject our modified client into the new instance provided by the go-jira library
@@ -31,20 +34,47 @@ func setup() *recorder.Recorder {
 	return vcr
 }
 
-func shutdown(vcr *recorder.Recorder) {
+func teardown(vcr *recorder.Recorder) {
 	err := vcr.Stop()
 	if err != nil {
 		log.Fatal(err)
 	}
 }
 
+func TestAuthorization(t *testing.T) {
+	record := setup("auth", true, false)
+
+	record.SetMatcher(func(r *http.Request, i cassette.Request) bool {
+		authPresent := len(r.Header["Authorization"]) != 0
+		authMatches := r.Header["Authorization"][0] == i.Headers.Get("Authorization")
+		return cassette.DefaultMatcher(r, i) && (authPresent && authMatches)
+	})
+
+	_, response := runQuery()
+	jsonResult, _ := json.Marshal(response)
+	result := jiradata.ErrorCollection{}
+	if err := json.Unmarshal(jsonResult, &result); err != nil {
+		t.Fatal(err)
+	}
+
+	if result.Status != 401 {
+		t.Fatal(response)
+	}
+
+	teardown(record)
+}
+
 func TestRunQuery(t *testing.T) {
+	record := setup("search", false, false)
 	query.MaxResults = 20
 	query.Project = "JRACLOUD"
 	query.Sort = "assignee"
 
-	got := runQuery()
-	//fmt.Println(got.Issues[0])
+	got, err := runQuery()
+	if err != nil {
+		t.Fatal(err)
+	}
+
 	if got.Total <= 0  {
 		t.Errorf("Received %d results", got.Total)
 	}
@@ -68,12 +98,5 @@ func TestRunQuery(t *testing.T) {
 			}
 		})
 	}
-
-}
-
-func TestMain(m *testing.M) {
-	vcr := setup()
-	code := m.Run()
-	shutdown(vcr)
-	os.Exit(code)
+	teardown(record)
 }
