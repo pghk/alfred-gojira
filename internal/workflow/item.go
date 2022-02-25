@@ -32,6 +32,30 @@ func populate(defaultInstance interface{}, fromIssue jiradata.Issue, field strin
 	}
 }
 
+func getIcon(issueType string) *aw.Icon {
+	icon := &aw.Icon{Type: ""}
+	path := "./issueIcons/"
+	switch issueType {
+	case "Bug":
+		icon.Value = path + "bug.png"
+	case "Epic":
+		icon.Value = path + "epic.png"
+	case "Improvement":
+		icon.Value = path + "new_feature.png"
+	case "Task":
+		icon.Value = path + "task.png"
+	case "Story":
+		icon.Value = path + "story.png"
+	case "Sub-task":
+		icon.Value = path + "subtask.png"
+	case "Question/Research":
+		icon.Value = path + "question.png"
+	default:
+		icon.Value = path + "generic_issue.png"
+	}
+	return icon
+}
+
 func Add(issue *jiradata.Issue, toWorkflow *aw.Workflow) {
 	defaultIssueType := jiradata.IssueType{}
 	defaultIssueStatus := jiradata.Status{}
@@ -57,5 +81,6 @@ func Add(issue *jiradata.Issue, toWorkflow *aw.Workflow) {
 		Arg(fmt.Sprint(issueUrlBase + key)).
 		Autocomplete(key).
 		Valid(true).
+		Icon(getIcon(issueType)).
 		UID("")
 }

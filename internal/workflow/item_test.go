@@ -34,6 +34,9 @@ func TestAdd(t *testing.T) {
   		  "match": "TEST-1234 No one has fixed this yet",
   		  "arg": "https://jira.atlassian.com/browse/TEST-1234",
 		  "autocomplete": "TEST-1234",
+		  "icon": {
+		      "path": "./issueIcons/bug.png"
+		  },
 		  "uid": "",
           "valid": true
         }`
@@ -59,6 +62,9 @@ func TestAdd(t *testing.T) {
   		  "match": "TEST-5678 Someone is working on this task at the moment",
   		  "arg": "https://jira.atlassian.com/browse/TEST-5678",
 		  "autocomplete": "TEST-5678",
+		  "icon": {
+			  "path": "./issueIcons/task.png"
+		  },
 		  "uid": "",
           "valid": true
         }`

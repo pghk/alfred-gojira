@@ -5,11 +5,11 @@ test:
 
 clean:
 	go clean
-	-rm ./build/*
+	-rm -r ./build/*
 
 build:
 	make clean
 	go build -o build ./cmd/search
 	go build -o build ./cmd/settings
 	cp ./configs/* build/
-	cp ./assets/* build/
+	cp -r ./assets/* build/
