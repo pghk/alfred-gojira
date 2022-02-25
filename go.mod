@@ -11,6 +11,7 @@ require (
 	github.com/magefile/mage v1.12.1 // indirect
 	github.com/nsf/jsondiff v0.0.0-20210926074059-1e845ec5d249
 	github.com/theckman/go-flock v0.8.1 // indirect
+	go.deanishe.net/fuzzy v1.0.0
 	golang.org/x/sys v0.0.0-20220209214540-3681064d5158 // indirect
 	golang.org/x/text v0.3.7 // indirect
 )

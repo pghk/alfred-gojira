@@ -5,6 +5,7 @@ import (
 	"github.com/coryb/oreo"
 	aw "github.com/deanishe/awgo"
 	"github.com/go-jira/jira/jiradata"
+	"go.deanishe.net/fuzzy"
 	"gojiralfredo/internal/jira-client"
 	"gojiralfredo/internal/workflow"
 	"log"
@@ -24,11 +25,21 @@ var (
 	maxCacheAge   = 180 * time.Minute
 	doDownload    bool
 	workflowQuery string
+	sopts         []fuzzy.Option
 )
 
 func init() {
 	flag.BoolVar(&doDownload, "download", false, "retrieve list of issues from Jira")
-	wf = aw.New(aw.AddMagic(configMagic{}))
+	sopts = []fuzzy.Option{
+		fuzzy.AdjacencyBonus(10.0),
+		fuzzy.LeadingLetterPenalty(-0.1),
+		fuzzy.MaxLeadingLetterPenalty(-3.0),
+		fuzzy.UnmatchedLetterPenalty(-0.5),
+	}
+	wf = aw.New(
+		aw.AddMagic(configMagic{}),
+		aw.SortOptions(sopts...),
+	)
 	hostname = workflow.GetJiraHostname(wf)
 	jiraQuery = *jira.BuildQuery()
 	client = jira.BuildClient(workflow.GetCredentials(wf), true, true)
