@@ -6,6 +6,7 @@ import (
 	"github.com/coryb/oreo"
 	"github.com/go-jira/jira"
 	"gojiralfredo/internal/workflow"
+	"log"
 	"net/http"
 )
 
@@ -25,6 +26,15 @@ func (l *Logger) Printf(format string, args ...interface{}) {
 
 var logger = Logger{}
 
+type urlLogger struct {
+	wrapped http.Transport
+}
+
+func (u *urlLogger) RoundTrip(req *http.Request) (res *http.Response, e error) {
+	log.Printf("Requesting %v\n", req.URL)
+	return u.wrapped.RoundTrip(req)
+}
+
 func BuildClient(auth workflow.Auth, authorize bool, log bool) *oreo.Client {
 	rawAuth := fmt.Sprintf("%s:%s", auth.Username, auth.Password)
 	encodedAuth := base64.StdEncoding.EncodeToString([]byte(rawAuth))
@@ -41,7 +51,9 @@ func BuildClient(auth workflow.Auth, authorize bool, log bool) *oreo.Client {
 	}
 
 	if log {
-		client = client.WithLogger(&logger).WithTrace(true)
+		client = client.WithLogger(&logger).WithRequestTrace(true)
+	} else {
+		client = client.WithTransport(&urlLogger{})
 	}
 
 	return client
