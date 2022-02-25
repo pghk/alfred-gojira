@@ -8,22 +8,30 @@ import (
 	"gojiralfredo/internal/jira-client"
 	"gojiralfredo/internal/workflow"
 	"log"
+	"os"
+	"os/exec"
 	"strings"
+	"time"
 )
 
 var (
-	client *oreo.Client
-	consumer jira.Consumer
-	query jira.Query
-	wf *aw.Workflow
-	hostname string
+	client        *oreo.Client
+	consumer      jira.Consumer
+	jiraQuery     jira.Query
+	wf            *aw.Workflow
+	hostname      string
+	cacheName     = "issues.json"
+	maxCacheAge   = 180 * time.Minute
+	doDownload    bool
+	workflowQuery string
 )
 
 func init() {
+	flag.BoolVar(&doDownload, "download", false, "retrieve list of issues from Jira")
 	wf = aw.New(aw.AddMagic(configMagic{}))
 	hostname = workflow.GetJiraHostname(wf)
-	query = *jira.BuildQuery()
-	client = jira.BuildClient(workflow.GetCredentials(wf), true, false)
+	jiraQuery = *jira.BuildQuery()
+	client = jira.BuildClient(workflow.GetCredentials(wf), true, true)
 	setConsumer()
 }
 
@@ -36,7 +44,7 @@ func setConsumer() {
 }
 
 func runQuery() (*jiradata.SearchResults, error) {
-	query.QueryFields = strings.Join([]string{
+	jiraQuery.QueryFields = strings.Join([]string{
 		"assignee",
 		"created",
 		"priority",
@@ -46,25 +54,20 @@ func runQuery() (*jiradata.SearchResults, error) {
 		"issuetype",
 	},",")
 
-	query.MaxResults = 200
+	jiraQuery.MaxResults = 100
 
 	if wf.Config.Get("Project") != "" {
-		query.Project = wf.Config.Get("Project")
+		jiraQuery.Project = wf.Config.Get("Project")
 	}
-	query.Sort = "updated desc, sprint desc, priority desc, key desc"
+	jiraQuery.Sort = "updated desc, sprint desc, priority desc, key desc"
 
-	return consumer.Search(&query)
+	return consumer.Search(&jiraQuery)
 }
 
-func parseResults() {
-	results, err := runQuery()
-	if err != nil {
-		log.Fatal(err)
-	}
+func parseResults(results *jiradata.SearchResults) {
 	for _, issue := range results.Issues {
 		workflow.Add(issue, wf)
 	}
-
 }
 
 // Magic Action to enter the "settings" script filter
@@ -80,10 +83,54 @@ var _ aw.MagicAction = configMagic{}
 func run() {
 	wf.Args()
 	flag.Parse()
-	query := flag.Arg(0)
-	parseResults()
-	if query != "" {
-		wf.Filter(query)
+
+	if args := flag.Args(); len(args) > 0 {
+		workflowQuery = args[0]
+	}
+
+	if doDownload {
+		wf.Configure(aw.TextErrors(true))
+		results, err := runQuery()
+		if err != nil {
+			wf.FatalError(err)
+		}
+		if err := wf.Cache.StoreJSON(cacheName, results); err != nil {
+			wf.FatalError(err)
+		}
+		return
+	}
+
+	var results *jiradata.SearchResults
+	if wf.Cache.Exists(cacheName) {
+		if err := wf.Cache.LoadJSON(cacheName, &results); err != nil {
+			wf.FatalError(err)
+		}
+	}
+
+	if wf.Cache.Expired(cacheName, maxCacheAge) {
+		wf.Rerun(0.3)
+		if !wf.IsRunning("download") {
+			cmd := exec.Command(os.Args[0], "-download")
+			if err := wf.RunInBackground("download", cmd); err != nil {
+				wf.FatalError(err)
+			}
+		} else {
+			log.Printf("query job already running.")
+		}
+
+		if results == nil {
+			wf.NewItem("Fetching issues…").
+				Icon(aw.IconInfo)
+			wf.SendFeedback()
+			return
+		}
+	}
+
+
+	parseResults(results)
+
+	if workflowQuery != "" {
+		wf.Filter(workflowQuery)
 	}
 	wf.SendFeedback()
 }

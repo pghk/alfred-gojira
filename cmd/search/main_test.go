@@ -66,9 +66,9 @@ func TestAuthorization(t *testing.T) {
 
 func TestRunQuery(t *testing.T) {
 	record := setup("search", false, false)
-	query.MaxResults = 20
-	query.Project = "JRACLOUD"
-	query.Sort = "assignee"
+	jiraQuery.MaxResults = 20
+	jiraQuery.Project = "JRACLOUD"
+	jiraQuery.Sort = "assignee"
 
 	got, err := runQuery()
 	if err != nil {
