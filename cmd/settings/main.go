@@ -155,6 +155,11 @@ func run() {
 			Subtitle("↩ to edit in keychain").
 			Valid(true).
 			Var("name", "API token")
+
+		wf.NewItem("Search Jira Issues").
+			Subtitle("↩ to use workflow as configured").
+			Valid(true).
+			Var("trigger", "issues")
 	}
 
 

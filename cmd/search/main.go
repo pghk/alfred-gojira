@@ -20,7 +20,7 @@ var (
 )
 
 func init() {
-	wf = aw.New()
+	wf = aw.New(aw.AddMagic(configMagic{}))
 	hostname = workflow.GetJiraHostname(wf)
 	query = *jira.BuildQuery()
 	client = jira.BuildClient(workflow.GetCredentials(wf), true, false)
@@ -66,6 +66,16 @@ func parseResults() {
 	}
 
 }
+
+// Magic Action to enter the "settings" script filter
+type configMagic struct {}
+func (configMagic) Keyword() string {return "config" }
+func (configMagic) Description() string {return "Edit workflow configuration" }
+func (configMagic) RunText() string {return "Config action registered." }
+func (configMagic) Run() error {
+	return wf.Alfred.RunTrigger("settings", "")
+}
+var _ aw.MagicAction = configMagic{}
 
 func run() {
 	wf.Args()

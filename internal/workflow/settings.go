@@ -2,7 +2,6 @@ package workflow
 
 import (
 	aw "github.com/deanishe/awgo"
-	"log"
 )
 
 type Auth struct {
@@ -28,9 +27,11 @@ func GetCredentials(wf *aw.Workflow) Auth {
 		username = wf.Config.Get("USERNAME")
 	}
 
-	token, err := wf.Keychain.Get(tokenID)
-	if err != nil {
-		log.Fatal(err)
+	token, tokenErr := wf.Keychain.Get(tokenID)
+	if tokenErr != nil {
+		if err := wf.Alfred.RunTrigger("settings", ""); err != nil {
+			wf.FatalError(err)
+		}
 	}
 
 	return Auth{

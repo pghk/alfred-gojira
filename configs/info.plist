@@ -23,7 +23,7 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>A2BC01D3-6589-4433-8E46-D9AB8996BD3B</string>
+				<string>B889A97B-7AC9-45BA-93F7-93752C81CDF5</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -110,6 +110,31 @@
 				<false/>
 			</dict>
 		</array>
+		<key>B889A97B-7AC9-45BA-93F7-93752C81CDF5</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>3AD1DADB-76C9-4EA9-A15E-F488B892E750</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>3F9619BE-B32B-4C94-B2A5-AAA3053DF76C</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>A2BC01D3-6589-4433-8E46-D9AB8996BD3B</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 	</dict>
 	<key>createdby</key>
 	<string>Paul Hendrick</string>
@@ -121,6 +146,128 @@
 	<string>· Go Jira 🦖</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string>./settings "$1"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>37963178-FEED-4B21-8F9E-22D08FB96B3B</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>triggerid</key>
+				<string>settings</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.external</string>
+			<key>uid</key>
+			<string>72C5C1EC-78A8-4D17-B2D5-27372F5A492C</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>externaltriggerid</key>
+				<string>{var:trigger}</string>
+				<key>passinputasargument</key>
+				<true/>
+				<key>passvariables</key>
+				<true/>
+				<key>workflowbundleid</key>
+				<string>self</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.callexternaltrigger</string>
+			<key>uid</key>
+			<string>3AD1DADB-76C9-4EA9-A15E-F488B892E750</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>triggerid</key>
+				<string>issues</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.external</string>
+			<key>uid</key>
+			<string>8CB1746F-4B5A-456C-B2B6-0886D3896EBF</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string>{var:trigger}</string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>4</integer>
+						<key>matchstring</key>
+						<string>.+</string>
+						<key>outputlabel</key>
+						<string>run trigger</string>
+						<key>uid</key>
+						<string>3F9619BE-B32B-4C94-B2A5-AAA3053DF76C</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>else</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.conditional</string>
+			<key>uid</key>
+			<string>B889A97B-7AC9-45BA-93F7-93752C81CDF5</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -194,66 +341,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>triggerid</key>
-				<string>settings</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.trigger.external</string>
-			<key>uid</key>
-			<string>72C5C1EC-78A8-4D17-B2D5-27372F5A492C</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alfredfiltersresults</key>
-				<false/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<true/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<true/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string></string>
-				<key>script</key>
-				<string>./settings "$1"</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>subtext</key>
-				<string></string>
-				<key>title</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>37963178-FEED-4B21-8F9E-22D08FB96B3B</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>lastpathcomponent</key>
 				<false/>
 				<key>onlyshowifquerypopulated</key>
@@ -317,21 +404,8 @@ variables={allvars}
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>triggerid</key>
-				<string>issues</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.trigger.external</string>
-			<key>uid</key>
-			<string>8CB1746F-4B5A-456C-B2B6-0886D3896EBF</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>alfredfiltersresults</key>
-				<true/>
+				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
 				<integer>0</integer>
 				<key>argumenttreatemptyqueryasnil</key>
@@ -414,12 +488,19 @@ variables={allvars}
 			<key>ypos</key>
 			<integer>35</integer>
 		</dict>
+		<key>3AD1DADB-76C9-4EA9-A15E-F488B892E750</key>
+		<dict>
+			<key>xpos</key>
+			<integer>700</integer>
+			<key>ypos</key>
+			<integer>40</integer>
+		</dict>
 		<key>6D12A18E-3939-4E15-9CAB-86E0C318C037</key>
 		<dict>
 			<key>xpos</key>
-			<integer>1095</integer>
+			<integer>1180</integer>
 			<key>ypos</key>
-			<integer>35</integer>
+			<integer>245</integer>
 		</dict>
 		<key>72C5C1EC-78A8-4D17-B2D5-27372F5A492C</key>
 		<dict>
@@ -447,34 +528,41 @@ variables={allvars}
 		<key>A2BC01D3-6589-4433-8E46-D9AB8996BD3B</key>
 		<dict>
 			<key>xpos</key>
-			<integer>615</integer>
+			<integer>700</integer>
 			<key>ypos</key>
-			<integer>65</integer>
+			<integer>275</integer>
 		</dict>
 		<key>ABAA4FA2-0380-42F4-9719-72625FC76DA6</key>
 		<dict>
 			<key>note</key>
 			<string>Save new value</string>
 			<key>xpos</key>
-			<integer>925</integer>
+			<integer>1010</integer>
 			<key>ypos</key>
-			<integer>35</integer>
+			<integer>245</integer>
 		</dict>
 		<key>AD1DC959-5643-468D-8FA4-05181AE1FA68</key>
 		<dict>
 			<key>note</key>
 			<string>Enter a new value</string>
 			<key>xpos</key>
-			<integer>690</integer>
+			<integer>775</integer>
 			<key>ypos</key>
-			<integer>35</integer>
+			<integer>245</integer>
 		</dict>
 		<key>B6790363-9C9B-487D-B899-7D7A303B5FF6</key>
 		<dict>
 			<key>xpos</key>
-			<integer>850</integer>
+			<integer>935</integer>
 			<key>ypos</key>
-			<integer>65</integer>
+			<integer>275</integer>
+		</dict>
+		<key>B889A97B-7AC9-45BA-93F7-93752C81CDF5</key>
+		<dict>
+			<key>xpos</key>
+			<integer>535</integer>
+			<key>ypos</key>
+			<integer>220</integer>
 		</dict>
 	</dict>
 	<key>variables</key>
@@ -484,8 +572,12 @@ variables={allvars}
 	</dict>
 	<key>variablesdontexport</key>
 	<array>
+		<string>Project</string>
 		<string>USERNAME</string>
+		<string>HOSTNAME</string>
 	</array>
+	<key>version</key>
+	<string></string>
 	<key>webaddress</key>
 	<string></string>
 </dict>
