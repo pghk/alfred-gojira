@@ -18,13 +18,13 @@ type Query struct {
 	*jira.SearchOptions
 }
 
-type Logger struct{}
+type debugLogger struct{}
 
-func (l *Logger) Printf(format string, args ...interface{}) {
-	fmt.Printf(format, args...)
+func (l *debugLogger) Printf(format string, args ...interface{}) {
+	log.Printf(format, args...)
 }
 
-var logger = Logger{}
+var logger = debugLogger{}
 
 type urlLogger struct {
 	wrapped http.Transport
@@ -35,7 +35,7 @@ func (u *urlLogger) RoundTrip(req *http.Request) (res *http.Response, e error) {
 	return u.wrapped.RoundTrip(req)
 }
 
-func BuildClient(auth workflow.Auth, authorize bool, log bool) *oreo.Client {
+func BuildClient(auth workflow.Auth, authorize bool, verbose bool) *oreo.Client {
 	rawAuth := fmt.Sprintf("%s:%s", auth.Username, auth.Password)
 	encodedAuth := base64.StdEncoding.EncodeToString([]byte(rawAuth))
 	authHeaderVal := fmt.Sprintf("Basic %s", encodedAuth)
@@ -50,8 +50,8 @@ func BuildClient(auth workflow.Auth, authorize bool, log bool) *oreo.Client {
 			})
 	}
 
-	if log {
-		client = client.WithLogger(&logger).WithRequestTrace(true)
+	if verbose {
+		client = client.WithLogger(&logger).WithTrace(true)
 	} else {
 		client = client.WithTransport(&urlLogger{})
 	}
