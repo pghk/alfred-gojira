@@ -68,6 +68,7 @@ func TestRunQuery(t *testing.T) {
 	record := setup("search", false, false)
 	setQuery()
 	jiraQuery.MaxResults = 101
+	jiraQuery.SearchOptions.Query = ""
 	jiraQuery.Project = "JRACLOUD"
 	jiraQuery.Sort = "assignee"
 

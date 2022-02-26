@@ -23,13 +23,15 @@ var (
 	hostname      string
 	cacheName     = "issues.json"
 	maxCacheAge   = 180 * time.Minute
-	doDownload    bool
-	workflowQuery string
-	sortOptions   []fuzzy.Option
+	doDownload  bool
+	filter      string
+	query		string
+	sortOptions []fuzzy.Option
 )
 
 func init() {
 	flag.BoolVar(&doDownload, "download", false, "retrieve list of issues from Jira")
+	flag.StringVar(&query, "query", "", "JQL string, used to query Jira for issues")
 	sortOptions = []fuzzy.Option{
 		fuzzy.AdjacencyBonus(10.0),
 		fuzzy.SeparatorBonus(5.0),
@@ -64,15 +66,15 @@ func setQuery() {
 		"summary",
 		"updated",
 		"issuetype",
+		"resolution",
 	}, ",")
 
 	jiraQuery.MaxResults = 1000
 
-	if wf.Config.Get("Project") != "" {
-		jiraQuery.Project = wf.Config.Get("Project")
-	}
-	jiraQuery.Sort = "updated desc, sprint desc, priority desc, key desc"
+	jiraQuery.SearchOptions.Query = query
+}
 
+func runQuery() (*jiradata.SearchResults, error) {
 	return consumer.Search(&jiraQuery)
 }
 
@@ -99,7 +101,7 @@ func run() {
 	flag.Parse()
 
 	if args := flag.Args(); len(args) > 0 {
-		workflowQuery = args[0]
+		filter = args[0]
 	}
 
 	if doDownload {
@@ -125,7 +127,7 @@ func run() {
 	if wf.Cache.Expired(cacheName, maxCacheAge) {
 		wf.Rerun(0.3)
 		if !wf.IsRunning("download") {
-			cmd := exec.Command(os.Args[0], "-download")
+			cmd := exec.Command(os.Args[0], "-download", "-query", query)
 			if err := wf.RunInBackground("download", cmd); err != nil {
 				wf.FatalError(err)
 			}
@@ -143,8 +145,8 @@ func run() {
 
 	parseResults(results)
 
-	if workflowQuery != "" {
-		wf.Filter(workflowQuery)
+	if filter != "" {
+		wf.Filter(filter)
 	}
 	wf.SendFeedback()
 }
