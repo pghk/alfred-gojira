@@ -15,7 +15,7 @@ import (
 
 func setup(name string, withAuthorization bool, withLog bool) *recorder.Recorder {
 	// Start test fixture recorder
-	vcr, err := recorder.New("../../test/_data/fixtures/" + name)
+	vcr, err := recorder.New("../../test/_fixtures/" + name)
 	if err != nil {
 		log.Fatal(err)
 	}

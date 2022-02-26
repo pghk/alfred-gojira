@@ -1,0 +1,128 @@
+---
+version: 1
+interactions:
+- request:
+    body: '{"fields":["summary"],"jql":"resolution = unresolved","maxResults":100}'
+    form: {}
+    headers:
+      Authorization:
+      - Basic dGVzdGluZzpoZWxsbyB0aGlzIGlzIHBhc3N3b3Jk
+      Content-Type:
+      - application/json
+    url: https://jira.atlassian.com/rest/api/2/search
+    method: POST
+  response:
+    body: "\n\n\n\n\n\n\n\n\n\n\n<html>\n\n<head>\n    <title>Unauthorized (401)</title>\n
+      \   \n\n\n\n<!--[if IE]><![endif]-->\n<script type=\"text/javascript\">\n    (function()
+      {\n        var contextPath = '';\n\n        function printDeprecatedMsg() {\n
+      \           if (console && console.warn) {\n                console.warn('DEPRECATED
+      JS - contextPath global variable has been deprecated since 7.4.0. Use `wrm/context-path`
+      module instead.');\n            }\n        }\n\n        Object.defineProperty(window,
+      'contextPath', {\n            get: function() {\n                printDeprecatedMsg();\n
+      \               return contextPath;\n            },\n            set: function(value)
+      {\n                printDeprecatedMsg();\n                contextPath = value;\n
+      \           }\n        });\n    })();\n\n</script>\n<script>\nwindow.WRM=window.WRM||{};window.WRM._unparsedData=window.WRM._unparsedData||{};window.WRM._unparsedErrors=window.WRM._unparsedErrors||{};\nWRM._unparsedData[\"com.atlassian.plugins.atlassian-plugins-webresource-plugin:context-path.context-path\"]=\"\\\"\\\"\";\nWRM._unparsedData[\"jira.core:feature-flags-data.feature-flag-data\"]=\"{\\\"enabled-feature-keys\\\":[\\\"com.atlassian.jira.rest.v2.search.UserListResolver.getShareCount.disabled\\\",\\\"com.atlassian.jira.agile.darkfeature.editable.detailsview\\\",\\\"nps.survey.inline.dialog\\\",\\\"com.atlassian.jira.agile.darkfeature.edit.closed.sprint.enabled\\\",\\\"com.atlassian.jira.plugins.hipchat.glances\\\",\\\"jira.plugin.devstatus.phasetwo\\\",\\\"jira.frother.reporter.field\\\",\\\"atlassian.rest.xsrf.legacy.enabled\\\",\\\"com.atlassian.jira.application.active.users.count.cache.asynchronous\\\",\\\"jira.issue.status.lozenge\\\",\\\"com.atlassian.jira.config.BIG_PIPE\\\",\\\"com.atlassian.jira.projects.issuenavigator\\\",\\\"jira.plugin.devstatus.labs\\\",\\\"com.atlassian.mobile.simplified.mode\\\",\\\"com.atlassian.jira.security.LegacyJiraTypeResolver.block.unknown.functions.enabled\\\",\\\"com.atlassian.jira.config.PDL\\\",\\\"jira.plugin.devstatus.phasetwo.enabled\\\",\\\"atlassian.aui.raphael.disabled\\\",\\\"com.atlassian.greenhopper.reporting\\\",\\\"app-switcher.new\\\",\\\"frother.assignee.field\\\",\\\"com.atlassian.jira.projects.ProjectCentricNavigation.Switch\\\",\\\"sd.internal.base.off.thread.on.completion.events.enabled\\\",\\\"jira.onboarding.cyoa\\\",\\\"com.atlassian.jira.agile.darkfeature.kanplan.enabled\\\",\\\"sd.slavalue.record.updated.date.enabled\\\",\\\"com.atlassian.jira.config.ProjectConfig.MENU\\\",\\\"com.atlassian.jira.projects.sidebar.DEFER_RESOURCES\\\",\\\"com.atlassian.jira.agile.darkfeature.kanplan.epics.and.versions.enabled\\\",\\\"com.atlassian.jira.agile.darkfeature.sprint.goal.enabled\\\",\\\"jira.plugin.devstatus\\\",\\\"jira.zdu.admin-updates-ui\\\",\\\"jira.zdu.jmx-monitoring\\\",\\\"sd.sla.improved.rendering.enabled\\\",\\\"sd.canned.responses.enabled\\\",\\\"mail.batching.enabled\\\",\\\"sd.new.settings.sidebar.location.disabled\\\",\\\"jira.onboarding.feature.disabled\\\",\\\"jira.zdu.cluster-upgrade-state\\\",\\\"com.atlassian.jira.email.templates.readFromJiraHome\\\",\\\"com.atlassian.jira.agile.darkfeature.splitissue\\\",\\\"com.atlassian.jira.config.CoreFeatures.LICENSE_ROLES_ENABLED\\\",\\\"jira.export.csv.enabled\\\"],\\\"feature-flag-states\\\":{\\\"com.atlassian.jira.security.endpoint.non.admin.access.screens\\\":false,\\\"com.atlassian.jira.mailHandlerImapMessageQueryLegacy\\\":false,\\\"com.atlassian.jira.webhookEventsAsyncProcessing\\\":true,\\\"com.atlassian.jira.diagnostics.perflog\\\":true,\\\"com.atlassian.jira.dbr\\\":true,\\\"com.atlassian.jira.issuetable.move.links.hidden\\\":true,\\\"com.atlassian.jira.agile.darkfeature.unlink.sprints.on.issue.move\\\":true,\\\"jira.renderer.consider.variable.format\\\":true,\\\"com.atlassian.jira.user.dbIdBasedKeyGenerationStrategy\\\":true,\\\"com.atlassian.jira.plugin.issuenavigator.jql.autocomplete.eagerlyLoaded\\\":false,\\\"com.atlassian.portfolio.dcBundling\\\":true,\\\"com.atlassian.jira.sharedEntityEditRights\\\":true,\\\"com.atlassian.jira.security.endpoint.anonymous.access.resolution\\\":false,\\\"com.atlassian.jira.agile.darkfeature.sprint.goal\\\":false,\\\"com.atlassian.jira.thumbnailsDeferredGeneration\\\":true,\\\"jira.cluster.monitoring.show.offline.nodes\\\":true,\\\"com.atlassian.jira.commentReactions\\\":true,\\\"data.pipeline.feature.jira.issue.links.export\\\":true,\\\"com.atlassian.jira.custom.csv.escaper\\\":true,\\\"com.atlassian.jira.fixedCommentDeletionNotifications\\\":true,\\\"com.atlassian.jira.allThumbnailsDeferred\\\":false,\\\"com.atlassian.jira.plugin.issuenavigator.filtersUxImprovment\\\":true,\\\"com.atlassian.jira.agile.darkfeature.kanplan.epics.and.versions\\\":false,\\\"com.atlassian.jira.jsd.mobile\\\":true,\\\"jira.customfields.cleanup.identification\\\":true,\\\"data.pipeline.feature.jira.all.exportable.custom.fields\\\":true,\\\"com.atlassian.jira.defaultValuesForSystemFields\\\":true,\\\"jira.dc.cleanup.cluser.tasks\\\":true,\\\"jira.customfields.bulk.delete\\\":true,\\\"com.atlassian.jira.issues.archiving.filters\\\":false,\\\"mail.batching.override.core\\\":true,\\\"jira.users.and.roles.page.in.react\\\":true,\\\"jira.security.csp.sandbox\\\":true,\\\"com.atlassian.jira.agile.darkfeature.velocity.chart.ui\\\":true,\\\"com.atlassian.jira.returnDefaultAvatarsForBrokenAvatars\\\":true,\\\"com.atlassian.jira.agile.darkfeature.sprint.auto.management\\\":false,\\\"jira.jql.suggestrecentfields\\\":false,\\\"com.atlassian.jira.gdpr.rtbf\\\":true,\\\"com.atlassian.jira.security.xsrf.session.token\\\":true,\\\"com.atlassian.jira.agile.darkfeature.optimistic.transitions\\\":true,\\\"com.atlassian.jira.security.project.admin.revoke.with.application.access\\\":true,\\\"com.atlassian.jiranomenclature\\\":true,\\\"com.atlassian.jira.security.endpoint.non.admin.access.avatar.system\\\":false,\\\"com.atlassian.jira.agile.darkfeature.kanplan\\\":false,\\\"com.atlassian.jira.agile.darkfeature.future.sprint.dates\\\":true,\\\"com.atlassian.jira.filtersAndDashboardsShareableWithAllGroupsAndRoles\\\":true,\\\"jira.customfields.paginated.ui\\\":true,\\\"com.atlassian.jira.agile.darkfeature.edit.closed.sprint\\\":false,\\\"jira.create.linked.issue\\\":true,\\\"com.atlassian.jira.advanced.audit.log\\\":true,\\\"jira.sal.host.connect.accessor.existing.transaction.will.create.transactions\\\":true,\\\"external.links.new.window\\\":true,\\\"jira.quick.search\\\":true,\\\"jira.jql.smartautoselectfirst\\\":false,\\\"jira.jql.membersof.ignoreGlobalPermissionsForAnonymous\\\":false,\\\"data.pipeline.feature.jira.issue.history.export\\\":true,\\\"com.atlassian.jira.security.endpoint.non.browse.projects.access.fields\\\":false,\\\"atlassian.cdn.static.assets\\\":true,\\\"jira.richeditor.bidi.warning\\\":true,\\\"mail.batching\\\":false,\\\"com.atlassian.jira.privateEntitiesEditable\\\":true,\\\"com.atlassian.jira.security.endpoint.anonymous.access.priority\\\":false,\\\"jira.priorities.per.project.edit.default\\\":false,\\\"com.atlassian.jira.agile.darkfeature.issues.in.epic.details.view\\\":true,\\\"jira.priorities.per.project.jsd\\\":true,\\\"com.atlassian.jira.plugin.issuenavigator.anonymousPreventCfData\\\":false,\\\"com.atlassian.jira.agile.darkfeature.rapid.boards.bands\\\":true,\\\"com.atlassian.jira.agile.darkfeature.flexible.boards\\\":true,\\\"com.atlassian.jira.agile.darkfeature.sprint.picker.allsprints.suggestion\\\":true,\\\"jira.dc.lock.leasing\\\":true,\\\"com.atlassian.jira.accessibility.personal.settings\\\":true,\\\"mail.batching.create.section.cf\\\":true,\\\"com.atlassian.jira.send.email.notifications.to.user.without.application.access\\\":false,\\\"com.atlassian.jira.security.endpoint.non.browse.projects.access.autocompletedata\\\":false,\\\"com.atlassian.mail.server.managers.hostname.verification\\\":true,\\\"com.atlassian.advancedroadmaps.rebrand\\\":true,\\\"com.atlassian.jira.upgrade.startup.fix.index\\\":false,\\\"com.atlassian.jira.security.endpoint.anonymous.access.projectCategory\\\":false,\\\"jira.redirect.anonymous.404.errors\\\":true,\\\"com.atlassian.jira.issuetable.draggable\\\":true,\\\"com.atlassian.jira.attachments.generate.unique.suffix\\\":true,\\\"com.atlassian.jira.agile.darkfeature.kanban.hide.old.done.issues\\\":true,\\\"jira.version.based.node.reindex.service\\\":true,\\\"com.atlassian.jira.agile.darkfeature.backlog.showmore\\\":true,\\\"com.atlassian.jira.agile.darkfeature.sprint.plan\\\":false,\\\"com.atlassian.jira.security.endpoint.anonymous.access.issueLinkType\\\":false,\\\"com.atlassian.jira.security.LegacyJiraTypeResolver.WARN_ONLY\\\":false,\\\"data.pipeline.feature.jira.schema.version.2\\\":true,\\\"com.atlassian.jira.agile.darkfeature.burnupchart\\\":true,\\\"com.atlassian.jira.agile.darkfeature.velocity.sprint.picker\\\":false,\\\"com.atlassian.jira.issues.archiving.browse\\\":true,\\\"jira.instrumentation.laas\\\":false,\\\"com.atlassian.jira.security.ChartUtils.browse.projects.permission.check\\\":false,\\\"mail.batching.user.notification\\\":true,\\\"com.atlassian.jira.agile.darkfeature.dataonpageload\\\":true,\\\"data.pipeline.feature.jira.archived.issue.export\\\":false,\\\"com.atlassian.jira.projects.per.project.permission.query\\\":true,\\\"com.atlassian.jira.issues.archiving\\\":true,\\\"index.use.snappy\\\":true,\\\"jira.priorities.per.project\\\":true}}\";\nWRM._unparsedData[\"jira.core:default-comment-security-level-data.DefaultCommentSecurityLevelHelpLink\"]=\"{\\\"extraClasses\\\":\\\"default-comment-level-help\\\",\\\"title\\\":\\\"Commenting
+      on an Issue\\\",\\\"url\\\":\\\"https://docs.atlassian.com/jira/jcore-docs-0820/Editing+and+collaborating+on+issues#Editingandcollaboratingonissues-restrictacomment\\\",\\\"isLocal\\\":false}\";\nWRM._unparsedData[\"com.atlassian.analytics.analytics-client:policy-update-init.policy-update-data-provider\"]=\"false\";\nWRM._unparsedData[\"com.atlassian.analytics.analytics-client:programmatic-analytics-init.programmatic-analytics-data-provider\"]=\"false\";\nWRM._unparsedData[\"jira.core:dateFormatProvider.allFormats\"]=\"{\\\"dateFormats\\\":{\\\"meridiem\\\":[\\\"AM\\\",\\\"PM\\\"],\\\"eras\\\":[\\\"BC\\\",\\\"AD\\\"],\\\"months\\\":[\\\"January\\\",\\\"February\\\",\\\"March\\\",\\\"April\\\",\\\"May\\\",\\\"June\\\",\\\"July\\\",\\\"August\\\",\\\"September\\\",\\\"October\\\",\\\"November\\\",\\\"December\\\"],\\\"monthsShort\\\":[\\\"Jan\\\",\\\"Feb\\\",\\\"Mar\\\",\\\"Apr\\\",\\\"May\\\",\\\"Jun\\\",\\\"Jul\\\",\\\"Aug\\\",\\\"Sep\\\",\\\"Oct\\\",\\\"Nov\\\",\\\"Dec\\\"],\\\"weekdaysShort\\\":[\\\"Sun\\\",\\\"Mon\\\",\\\"Tue\\\",\\\"Wed\\\",\\\"Thu\\\",\\\"Fri\\\",\\\"Sat\\\"],\\\"weekdays\\\":[\\\"Sunday\\\",\\\"Monday\\\",\\\"Tuesday\\\",\\\"Wednesday\\\",\\\"Thursday\\\",\\\"Friday\\\",\\\"Saturday\\\"]},\\\"lookAndFeelFormats\\\":{\\\"relativize\\\":\\\"true\\\",\\\"time\\\":\\\"h:mm
+      a\\\",\\\"day\\\":\\\"EEEE h:mm a\\\",\\\"dmy\\\":\\\"dd/MMM/yyyy\\\",\\\"complete\\\":\\\"dd/MMM/yyyy
+      h:mm a\\\"}}\";\nWRM._unparsedData[\"com.atlassian.jira.plugins.jira-slack-server-integration-plugin:slack-link-error-resources.slack-link-error\"]=\"{}\";\nWRM._unparsedData[\"jira.core:avatar-picker-data.data\"]=\"{}\";\nWRM._unparsedData[\"jira.core:terminology-data.terminology\"]=\"{\\\"terminologyEntries\\\":[{\\\"originalName\\\":\\\"sprint\\\",\\\"originalNamePlural\\\":\\\"sprints\\\",\\\"newName\\\":\\\"sprint\\\",\\\"newNamePlural\\\":\\\"sprints\\\",\\\"isDefault\\\":true},{\\\"originalName\\\":\\\"epic\\\",\\\"originalNamePlural\\\":\\\"epics\\\",\\\"newName\\\":\\\"epic\\\",\\\"newNamePlural\\\":\\\"epics\\\",\\\"isDefault\\\":true}],\\\"isTerminologyActive\\\":false}\";\nWRM._unparsedData[\"com.atlassian.jira.jira-header-plugin:dismissedFlags.flags\"]=\"{\\\"dismissed\\\":[]}\";\nWRM._unparsedData[\"com.atlassian.jira.jira-header-plugin:newsletter-signup-tip-init.newsletterSignup\"]=\"{\\\"signupDescription\\\":\\\"Get
+      updates, inspiration and best practices from the team behind Jira.\\\",\\\"formUrl\\\":\\\"https://www.atlassian.com/apis/exact-target/{0}/subscribe?mailingListId=1401671\\\",\\\"signupTitle\\\":\\\"Sign
+      up!\\\",\\\"signupId\\\":\\\"newsletter-signup-tip\\\",\\\"showNewsletterTip\\\":false}\";\nWRM._unparsedData[\"com.atlassian.jira.project-templates-plugin:project-templates-plugin-resources.ptAnalyticsData\"]=\"{\\\"instanceCreatedDate\\\":\\\"2010-03-14\\\"}\";\nWRM._unparsedData[\"com.atlassian.jira.ext.calendar:tipDataProvider.tip\"]=\"{\\\"suppressTip\\\":false}\";\nWRM._unparsedData[\"com.atlassian.cst.google-tag-manager-plugin:google-tag-manager-resources.gtm-context\"]=\"{\\\"gtmContainerId\\\":\\\"GTM-P5TG25P\\\",\\\"atlassian\\\":false,\\\"analyticsState\\\":{\\\"gtmInjectAttemptTrackedForSession\\\":false,\\\"gtmInjectCompletionTrackedForSession\\\":false,\\\"anonId\\\":\\\"4bcad50c-3fc6-4fbe-b87f-6412cdb7af1e\\\"},\\\"analyticsEnabled\\\":true}\";\nWRM._unparsedData[\"com.atlassian.cst.atlassian-tag-manager-plugin:atlassian-tag-manager-resources.atm-context\"]=\"{\\\"atlassian\\\":false,\\\"atlassianId\\\":null,\\\"tags\\\":[{\\\"tagType\\\":\\\"HTML\\\",\\\"name\\\":\\\"Atlassian
+      Tag Manager Beacon\\\",\\\"description\\\":null,\\\"value\\\":\\\"\\u003cdiv
+      id=\\\\\\\"atm-loaded-beacon\\\\\\\"\\u003e\\u003c/div\\u003e\\\",\\\"trigger\\\":{\\\"triggerType\\\":\\\"DOM_READY\\\",\\\"matchType\\\":\\\"ALL_PAGES\\\",\\\"urlPart\\\":\\\"PATHNAME\\\",\\\"matchTest\\\":null},\\\"disabled\\\":false},{\\\"tagType\\\":\\\"SCRIPT\\\",\\\"name\\\":\\\"Bug
+      Issue Template\\\",\\\"description\\\":\\\"Bug Issue Template\\\",\\\"value\\\":\\\"https://cst-static-tags.prod.atl-paas.net/js/jac-bug-template.js\\\",\\\"trigger\\\":{\\\"triggerType\\\":\\\"DOM_READY\\\",\\\"matchType\\\":\\\"ALL_PAGES\\\",\\\"urlPart\\\":\\\"PATHNAME\\\",\\\"matchTest\\\":\\\"\\\"},\\\"disabled\\\":false},{\\\"tagType\\\":\\\"SCRIPT\\\",\\\"name\\\":\\\"Bug
+      Watch Notification\\\",\\\"description\\\":\\\"Bug Watch Notification\\\",\\\"value\\\":\\\"https://cst-static-tags.prod.atl-paas.net/js/bug-watch-notification.js\\\",\\\"trigger\\\":{\\\"triggerType\\\":\\\"DOM_READY\\\",\\\"matchType\\\":\\\"REGEX\\\",\\\"urlPart\\\":\\\"PATHNAME\\\",\\\"matchTest\\\":\\\"(.*/browse/[A-Z]+-\\\\\\\\d+.*)|(/projects/.*/issues/.*)\\\"},\\\"disabled\\\":false},{\\\"tagType\\\":\\\"SCRIPT\\\",\\\"name\\\":\\\"Disable
+      customer bug creation\\\",\\\"description\\\":\\\"Disable customer bug creation\\\",\\\"value\\\":\\\"https://cst-static-tags.prod.atl-paas.net/js/disable-customer-bugs.js\\\",\\\"trigger\\\":{\\\"triggerType\\\":\\\"DOM_READY\\\",\\\"matchType\\\":\\\"ALL_PAGES\\\",\\\"urlPart\\\":\\\"PATHNAME\\\",\\\"matchTest\\\":\\\"\\\"},\\\"disabled\\\":false},{\\\"tagType\\\":\\\"HTML\\\",\\\"name\\\":\\\"Rename
+      Kanban Board\\\",\\\"description\\\":\\\"Rename Kanban Board\\\",\\\"value\\\":\\\"\\u003cscript
+      type=\\\\\\\"text/javascript\\\\\\\" src=\\\\\\\"https://cst-static-tags.prod.atl-paas.net/js/jac-board-rename.js\\\\\\\"\\u003e\\u003c/script\\u003e\\\",\\\"trigger\\\":{\\\"triggerType\\\":\\\"PAGE_VIEW\\\",\\\"matchType\\\":\\\"ALL_PAGES\\\",\\\"urlPart\\\":\\\"PATHNAME\\\",\\\"matchTest\\\":\\\"secure/RapidBoard.jspa\\\"},\\\"disabled\\\":false},{\\\"tagType\\\":\\\"SCRIPT\\\",\\\"name\\\":\\\"Fix
+      Version Rename\\\",\\\"description\\\":\\\"Fix Version Rename\\\",\\\"value\\\":\\\"https://cst-static-tags.prod.atl-paas.net/js/fix-version-rename.js\\\",\\\"trigger\\\":{\\\"triggerType\\\":\\\"DOM_READY\\\",\\\"matchType\\\":\\\"REGEX\\\",\\\"urlPart\\\":\\\"PATHNAME\\\",\\\"matchTest\\\":\\\"(/browse/JRASERVER)|(/browse/JSWSERVER)\\\"},\\\"disabled\\\":false},{\\\"tagType\\\":\\\"SCRIPT\\\",\\\"name\\\":\\\"Display
+      Roadmap Link Near Priority Field\\\",\\\"description\\\":\\\"Display Roadmap
+      Link Near Priority Field\\\",\\\"value\\\":\\\"https://cst-static-tags.prod.atl-paas.net/js/priority-roadmap-link.js\\\",\\\"trigger\\\":{\\\"triggerType\\\":\\\"DOM_READY\\\",\\\"matchType\\\":\\\"REGEX\\\",\\\"urlPart\\\":\\\"PATHNAME\\\",\\\"matchTest\\\":\\\"(.*/browse/[A-Z]+-\\\\\\\\d+.*)|(/projects/.*/issues/.*)\\\"},\\\"disabled\\\":false},{\\\"tagType\\\":\\\"SCRIPT\\\",\\\"name\\\":\\\"Change
+      vote button text\\\",\\\"description\\\":\\\"Change vote button text\\\",\\\"value\\\":\\\"https://cst-static-tags.prod.atl-paas.net/js/vote-button.js\\\",\\\"trigger\\\":{\\\"triggerType\\\":\\\"DOM_READY\\\",\\\"matchType\\\":\\\"REGEX\\\",\\\"urlPart\\\":\\\"PATHNAME\\\",\\\"matchTest\\\":\\\"(.*/browse/[A-Z]+-\\\\\\\\d+.*)|(/projects/.*/issues/.*)\\\"},\\\"disabled\\\":false},{\\\"tagType\\\":\\\"HTML\\\",\\\"name\\\":\\\"Google
+      Analytics\\\",\\\"description\\\":\\\"Google Analytics Script Tag\\\",\\\"value\\\":\\\"\\u003cscript
+      async=\\\\\\\"\\\\\\\" src=\\\\\\\"https://www.googletagmanager.com/gtag/js?id=UA-128049921-1\\\\\\\"\\u003e\\u003c/script\\u003e\\\\n\\u003cscript\\u003e\\\\n
+      \ window.dataLayer = window.dataLayer || [];\\\\n  function gtag(){dataLayer.push(arguments);}\\\\n
+      \ gtag(\\'js\\', new Date());\\\\n\\\\n  gtag(\\'config\\', \\'UA-128049921-1\\');\\\\n\\u003c/script\\u003e\\\\n\\\",\\\"trigger\\\":{\\\"triggerType\\\":\\\"PAGE_VIEW\\\",\\\"matchType\\\":\\\"ALL_PAGES\\\",\\\"urlPart\\\":null,\\\"matchTest\\\":\\\"\\\"},\\\"disabled\\\":false},{\\\"tagType\\\":\\\"SCRIPT\\\",\\\"name\\\":\\\"Disable
+      Customer Due Dates\\\",\\\"description\\\":\\\"Disable Customer Due Dates\\\",\\\"value\\\":\\\"https://cst-static-tags.prod.atl-paas.net/js/disable-customer-due-date.js\\\",\\\"trigger\\\":{\\\"triggerType\\\":\\\"DOM_READY\\\",\\\"matchType\\\":\\\"REGEX\\\",\\\"urlPart\\\":\\\"PATHNAME\\\",\\\"matchTest\\\":\\\"(.*/browse/[A-Z]+-\\\\\\\\d+.*)|(.*(/projects/.*)?/issues/.*)\\\"},\\\"disabled\\\":false},{\\\"tagType\\\":\\\"SCRIPT\\\",\\\"name\\\":\\\"Disable
+      Custom Field Config\\\",\\\"description\\\":\\\"Disables custom field config
+      in issue creation\\\",\\\"value\\\":\\\"https://cst-static-tags.prod.atl-paas.net/js/disable-custom-field-config.js\\\",\\\"trigger\\\":{\\\"triggerType\\\":\\\"DOM_READY\\\",\\\"matchType\\\":\\\"ALL_PAGES\\\",\\\"urlPart\\\":\\\"PATHNAME\\\",\\\"matchTest\\\":\\\"\\\"},\\\"disabled\\\":false}],\\\"analyticsState\\\":{\\\"atmInjectAttemptTrackedForSession\\\":false,\\\"atmInjectCompletionTrackedForSession\\\":false,\\\"anonId\\\":\\\"256c1ed9-e1ad-434d-9ee9-240c8869b0b1\\\"},\\\"analyticsEnabled\\\":true}\";\nWRM._unparsedData[\"jira.core:user-message-flags-data.adminLockout\"]=\"{}\";\nWRM._unparsedData[\"com.atlassian.plugins.helptips.jira-help-tips:help-tip-manager.JiraHelpTipData\"]=\"{\\\"anonymous\\\":true}\";\nif(window.WRM._dataArrived)window.WRM._dataArrived();</script>\n<link
+      type=\"text/css\" rel=\"stylesheet\" href=\"https://d348glwp6teod6.cloudfront.net/s/77bdc0202b086adf9e0a6364bb515be6-CDN/u0aag1/820006/1rg1jpn/bf140c2d3cdc01ec4082b00f2f866a09/_/download/contextbatch/css/_super/batch.css?relative-url=true\"
+      data-wrm-key=\"_super\" data-wrm-batch-type=\"context\" media=\"all\">\n<link
+      type=\"text/css\" rel=\"stylesheet\" href=\"https://d348glwp6teod6.cloudfront.net/s/29e0fadf78b8351fcdd63b8cb69b209b-CDN/u0aag1/820006/1rg1jpn/b0eaaa48d927cd95c714e44cfadc1399/_/download/contextbatch/css/atl.general,jira.global,-_super/batch.css?agile_global_admin_condition=true&amp;jag=true&amp;relative-url=true&amp;slack-enabled=true\"
+      data-wrm-key=\"atl.general,jira.global,-_super\" data-wrm-batch-type=\"context\"
+      media=\"all\">\n<script type=\"text/javascript\" src=\"https://d348glwp6teod6.cloudfront.net/s/c687fb57eec1bea0c9e86ecc22e4f6e7-CDN/u0aag1/820006/1rg1jpn/bf140c2d3cdc01ec4082b00f2f866a09/_/download/contextbatch/js/_super/batch.js?locale=en-UK\"
+      data-wrm-key=\"_super\" data-wrm-batch-type=\"context\" data-initially-rendered></script>\n<script
+      type=\"text/javascript\" src=\"https://d348glwp6teod6.cloudfront.net/s/ab85ab3711efe8e49a400a4507e90e14-CDN/u0aag1/820006/1rg1jpn/b0eaaa48d927cd95c714e44cfadc1399/_/download/contextbatch/js/atl.general,jira.global,-_super/batch.js?agile_global_admin_condition=true&amp;jag=true&amp;locale=en-UK&amp;slack-enabled=true\"
+      data-wrm-key=\"atl.general,jira.global,-_super\" data-wrm-batch-type=\"context\"
+      data-initially-rendered></script>\n<script type=\"text/javascript\" src=\"https://d348glwp6teod6.cloudfront.net/s/d41d8cd98f00b204e9800998ecf8427e-CDN/u0aag1/820006/1rg1jpn/1b2cb92a2490a21c1fdb12b08649a4c4/_/download/contextbatch/js/jira.general,-_super/batch.js\"
+      data-wrm-key=\"jira.general,-_super\" data-wrm-batch-type=\"context\" data-initially-rendered></script>\n<script
+      type=\"text/javascript\" src=\"https://d348glwp6teod6.cloudfront.net/s/c5214f264eb5c57a56436c376fab652f-CDN/u0aag1/820006/1rg1jpn/ed511616479aa2fdd97d34b75b6aab34/_/download/contextbatch/js/atl.global,-_super/batch.js?locale=en-UK\"
+      data-wrm-key=\"atl.global,-_super\" data-wrm-batch-type=\"context\" data-initially-rendered></script>\n<link
+      type=\"text/css\" rel=\"stylesheet\" href=\"https://d348glwp6teod6.cloudfront.net/s/68adcee0fc13a367e180327140651686-CDN/u0aag1/820006/1rg1jpn/13c62bbc38977cea4036f2a77274670e/_/download/contextbatch/css/jira.global.look-and-feel,-_super/batch.css?relative-url=true\"
+      data-wrm-key=\"jira.global.look-and-feel,-_super\" data-wrm-batch-type=\"context\"
+      media=\"all\">\n\n<script type=\"text/javascript\" src=\"/rest/api/1.0/shortcuts/820006/503d650b92111cd7dc7e7549d9b797a2/shortcuts.js\"></script>\n\n\n
+      \   <meta name=\"application-name\" content=\"JIRA\" data-name=\"jira\" data-version=\"8.20.6\">\n</head>\n<body
+      id=\"jira\" class=\"aui-layout aui-style-default page-type-message \" data-version=\"8.20.6\"
+      >\n\n<!-- HTTPError401 -->\n    <div class=\"aui-page-panel\" ><div class=\"aui-page-panel-inner\">\n
+      \           <main role=\"main\" id=\"main\" class=\"aui-page-panel-content\"
+      >\n                    <div class=\"aui-page-header\" ><div class=\"aui-page-header-inner\">\n
+      \                           <div class=\"aui-page-header-main\" >\n                                    <h1>Unauthorized
+      (401)</h1>\n                                </div>\n                        </div></div>\n
+      \                   <div class=\"aui-message aui-message-warning warning\">\n
+      \                           <p>Encountered a <code>&quot;401 - Unauthorized&quot;</code>
+      error while loading this page.</p>\n                            <p>Basic Authentication
+      Failure - Reason : AUTHENTICATED_FAILED</p>\n                            <p><a
+      href=\"/secure/MyJiraHome.jspa\">Go to Jira home</a></p>\n                        </div>\n
+      \               </main>\n        </div></div>\n</body>\n</html>\n"
+    headers:
+      Atl-Traceid:
+      - d17497ebb7ac908e
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Content-Type:
+      - text/html;charset=UTF-8
+      Date:
+      - Sat, 26 Feb 2022 17:23:04 GMT
+      Expect-Ct:
+      - report-uri="https://web-security-reports.services.atlassian.com/expect-ct-report/jac-gedgev2",
+        max-age=86400
+      Nel:
+      - '{"report_to": "endpoint-1", "max_age": 600, "include_subdomains": true, "failure_fraction":
+        0.001}'
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Report-To:
+      - '{"group": "endpoint-1", "max_age": 600, "endpoints": [{"url": "https://dj9s4kmieytgz.cloudfront.net"}],
+        "include_subdomains": true}'
+      Server:
+      - globaledge-envoy
+      Set-Cookie:
+      - AWSALB=E8JJknATFceeHtya7CO1VmRcir3VNzuY9KcpefAF/EdtCeUjFNVPQLk8Mc/krHova6d2dHuZS3dOgCjC9npmz8kwyYmoZ2hNsfVAdo9jf410RvAJ/0C79yqSCr3W;
+        Expires=Sat, 05 Mar 2022 17:23:04 GMT; Path=/
+      - AWSALBCORS=E8JJknATFceeHtya7CO1VmRcir3VNzuY9KcpefAF/EdtCeUjFNVPQLk8Mc/krHova6d2dHuZS3dOgCjC9npmz8kwyYmoZ2hNsfVAdo9jf410RvAJ/0C79yqSCr3W;
+        Expires=Sat, 05 Mar 2022 17:23:04 GMT; Path=/; SameSite=None
+      - JSESSIONID=3F8EF1FF28AC9A83ABB4F7F361719FDD; Path=/; Secure; HttpOnly
+      Strict-Transport-Security:
+      - max-age=63072000; preload
+      Vary:
+      - Accept-Encoding
+      Www-Authenticate:
+      - OAuth realm="https%3A%2F%2Fjira.atlassian.com"
+      X-Anodeid:
+      - i-06fcde5b3db94bd43-ipp-10.226.29.166
+      X-Arequestid:
+      - 1043x26791769x1
+      X-Asessionid:
+      - 28d66c
+      X-Content-Type-Options:
+      - nosniff
+      X-Envoy-Upstream-Service-Time:
+      - "162"
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Seraph-Loginreason:
+      - AUTHENTICATED_FAILED
+      X-Xss-Protection:
+      - 1; mode=block
+    status: 401 Unauthorized
+    code: 401
+    duration: ""
