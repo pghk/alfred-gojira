@@ -66,7 +66,8 @@ func TestAuthorization(t *testing.T) {
 
 func TestRunQuery(t *testing.T) {
 	record := setup("search", false, false)
-	jiraQuery.MaxResults = 20
+	setQuery()
+	jiraQuery.MaxResults = 101
 	jiraQuery.Project = "JRACLOUD"
 	jiraQuery.Sort = "assignee"
 

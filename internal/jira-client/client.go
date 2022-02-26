@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/coryb/oreo"
 	"github.com/go-jira/jira"
+	"github.com/go-jira/jira/jiradata"
 	"gojiralfredo/internal/workflow"
 	"log"
 	"net/http"
@@ -12,6 +13,10 @@ import (
 
 type Consumer struct {
 	*jira.Jira
+}
+
+func (c *Consumer) Search(query *Query) (*jiradata.SearchResults, error) {
+	return c.Jira.Search(query, jira.WithAutoPagination())
 }
 
 type Query struct {

@@ -55,7 +55,7 @@ func setConsumer() {
 	consumer = *jira.BuildConsumer("https://"+hostname, client)
 }
 
-func runQuery() (*jiradata.SearchResults, error) {
+func setQuery() {
 	jiraQuery.QueryFields = strings.Join([]string{
 		"assignee",
 		"created",
@@ -66,7 +66,7 @@ func runQuery() (*jiradata.SearchResults, error) {
 		"issuetype",
 	}, ",")
 
-	jiraQuery.MaxResults = 100
+	jiraQuery.MaxResults = 1000
 
 	if wf.Config.Get("Project") != "" {
 		jiraQuery.Project = wf.Config.Get("Project")
@@ -104,6 +104,7 @@ func run() {
 
 	if doDownload {
 		wf.Configure(aw.TextErrors(true))
+		setQuery()
 		results, err := runQuery()
 		if err != nil {
 			wf.FatalError(err)
