@@ -25,20 +25,21 @@ var (
 	maxCacheAge   = 180 * time.Minute
 	doDownload    bool
 	workflowQuery string
-	sopts         []fuzzy.Option
+	sortOptions   []fuzzy.Option
 )
 
 func init() {
 	flag.BoolVar(&doDownload, "download", false, "retrieve list of issues from Jira")
-	sopts = []fuzzy.Option{
+	sortOptions = []fuzzy.Option{
 		fuzzy.AdjacencyBonus(10.0),
+		fuzzy.SeparatorBonus(5.0),
 		fuzzy.LeadingLetterPenalty(-0.1),
 		fuzzy.MaxLeadingLetterPenalty(-3.0),
 		fuzzy.UnmatchedLetterPenalty(-0.5),
 	}
 	wf = aw.New(
 		aw.AddMagic(configMagic{}),
-		aw.SortOptions(sopts...),
+		aw.SortOptions(sortOptions...),
 	)
 	hostname = workflow.GetJiraHostname(wf)
 	jiraQuery = *jira.BuildQuery()

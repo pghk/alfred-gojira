@@ -77,7 +77,7 @@ func Add(issue *jiradata.Issue, toWorkflow *aw.Workflow) {
 
 	toWorkflow.NewItem(fmt.Sprintf("%s · %s · %s", key, status, assignee)).
 		Subtitle(fmt.Sprintf("%s: %s", issueType, summary)).
-		Match(fmt.Sprintf("%s %s %s %s %s", key, status, assignee, issueType, summary)).
+		Match(fmt.Sprintf("%s %s %s %s %s", assignee, issueType, status, summary, key)).
 		Arg(fmt.Sprint(issueUrlBase + key)).
 		Autocomplete(key).
 		Valid(true).
