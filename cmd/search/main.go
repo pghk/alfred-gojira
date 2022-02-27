@@ -29,6 +29,12 @@ var (
 	sortOptions []fuzzy.Option
 )
 
+func openConfigEditor(wf *aw.Workflow) {
+	if err := wf.Alfred.RunTrigger("settings", ""); err != nil {
+		wf.FatalError(err)
+	}
+}
+
 func init() {
 	flag.BoolVar(&doDownload, "download", false, "retrieve list of issues from Jira")
 	flag.StringVar(&query, "query", "", "JQL string, used to query Jira for issues")
@@ -45,7 +51,8 @@ func init() {
 	)
 	hostname = workflow.GetJiraHostname(wf)
 	jiraQuery = *jira.BuildQuery()
-	client = jira.BuildClient(workflow.GetCredentials(wf), true, false)
+	credentials := workflow.GetCredentials(wf, openConfigEditor)
+	client = jira.BuildClient(credentials, true, false)
 	setConsumer()
 }
 

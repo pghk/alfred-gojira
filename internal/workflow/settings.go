@@ -16,22 +16,20 @@ func GetJiraHostname(wf *aw.Workflow) string {
 	return "jira.atlassian.com"
 }
 
-func GetCredentials(wf *aw.Workflow) Auth {
-	tokenID := "jira.atlassian.com"
-	if wf.Config.Get("HOSTNAME") != "" {
-		tokenID = wf.Config.Get("HOSTNAME")
-	}
-
-	username := "test"
+func GetJiraUsername(wf *aw.Workflow) string {
 	if wf.Config.Get("USERNAME") != "" {
-		username = wf.Config.Get("USERNAME")
+		return wf.Config.Get("HOSTNAME")
 	}
+	return ""
+}
+
+func GetCredentials(wf *aw.Workflow, fallback func(wf *aw.Workflow)) Auth {
+	tokenID := GetJiraHostname(wf)
+	username := GetJiraUsername(wf)
 
 	token, tokenErr := wf.Keychain.Get(tokenID)
 	if tokenErr != nil {
-		if err := wf.Alfred.RunTrigger("settings", ""); err != nil {
-			wf.FatalError(err)
-		}
+		fallback(wf)
 	}
 
 	return Auth{
