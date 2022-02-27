@@ -1,59 +1,34 @@
-// Copyright (c) 2018 Dean Jackson <deanishe@deanishe.net>
-// MIT Licence - http://opensource.org/licenses/MIT
-
-/*
-Workflow settings demonstrates binding a struct to Alfred's settings.
-
-The workflow's settings are stored in info.plist/the workflow's
-configuration sheet in Alfred Preferences.
-
-These are imported into the Server struct using Config.To().
-
-The Script Filter displays these settings, and you can select one
-to change its value.
-
-If you enter a new value, this is saved to info.plist/the configuration
-sheet via Config.Set(), and the workflow is run again by calling
-its "settings" External Trigger via Alfred.RunTrigger().
-*/
 package main
 
 import (
 	"flag"
 	"fmt"
-	"log"
-
 	aw "github.com/deanishe/awgo"
+	"github.com/pghk/alfred-gojira/internal/workflow"
+	"go.deanishe.net/fuzzy"
+	"log"
 )
 
-// Server contains the configuration loaded from the workflow's settings
-// in the configuration sheet.
-type Server struct {
-	Hostname   string
-	Username   string
-}
-
 var (
-	srv *Server
-	wf  *aw.Workflow
-	// Command-line arguments
-	setKey, getKey string
+	wf              *aw.Workflow
+	tokenStorageKey string
+	setKey, getKey  string
 )
 
 func init() {
-	wf = aw.New()
+	wf = workflow.BuildWorkflow([]fuzzy.Option{})
+	tokenStorageKey = workflow.GetJiraHostname()
 	flag.StringVar(&setKey, "set", "", "save a value")
 	flag.StringVar(&getKey, "get", "", "enter a new value")
 }
 
-// save setting to info.plist via Alfred's AppleScript API
 func runSet(key, value string) {
 	wf.Configure(aw.TextErrors(true))
 
 	log.Printf("saving %#v to %s ...", value, key)
 
 	if key == "API_TOKEN" {
-		if err := wf.Keychain.Set(srv.Hostname, value); err != nil {
+		if err := wf.Keychain.Set(tokenStorageKey, value); err != nil {
 			wf.FatalError(err)
 		}
 	} else {
@@ -62,7 +37,7 @@ func runSet(key, value string) {
 		}
 	}
 
-	if err := wf.Alfred.RunTrigger("settings", ""); err != nil {
+	if err := wf.Alfred.RunTrigger(workflow.ConfigTriggerName, ""); err != nil {
 		wf.FatalError(err)
 	}
 
@@ -97,26 +72,7 @@ func runGet(key, value string) {
 }
 
 func run() {
-	wf.Args() // call to handle magic actions
-
-	// ----------------------------------------------------------------
-	// Load configuration
-
-	// Default configuration
-	srv = &Server{
-		Hostname:   "localhost",
-		Username:   "anonymous",
-	}
-
-	// Update config from environment variables
-	if err := wf.Config.To(srv); err != nil {
-		panic(err)
-	}
-
-	log.Printf("loaded: %#v", srv)
-
-	// ----------------------------------------------------------------
-	// Parse command-line flags and decide what to do
+	wf.Args()
 
 	flag.Parse()
 	query := flag.Arg(0)
@@ -131,20 +87,17 @@ func run() {
 		return
 	}
 
-	// ----------------------------------------------------------------
-	// Show available settings.
-
-	wf.NewItem("Hostname: "+srv.Hostname).
+	wf.NewItem("Hostname: "+workflow.GetJiraHostname()).
 		Subtitle("↩ to edit").
 		Valid(true).
 		Var("name", "hostname")
 
-	wf.NewItem("Username: "+srv.Username).
+	wf.NewItem("Username: "+workflow.GetJiraUsername()).
 		Subtitle("↩ to edit").
 		Valid(true).
 		Var("name", "username")
 
-	_, err := wf.Keychain.Get(srv.Hostname)
+	_, err := wf.Keychain.Get(tokenStorageKey)
 	if err != nil {
 		wf.NewItem("API token: not set").
 			Subtitle("↩ to add to Keychain").
@@ -161,7 +114,6 @@ func run() {
 			Valid(true).
 			Var("trigger", "issues")
 	}
-
 
 	if query != "" {
 		wf.Filter(query)

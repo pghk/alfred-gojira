@@ -44,7 +44,7 @@ func getIcon(issueType string) *aw.Icon {
 		icon.Value = path + "new_feature.png"
 	case "Task":
 		icon.Value = path + "task.png"
-	case "Story":
+	case "Story", "Suggestion":
 		icon.Value = path + "story.png"
 	case "Sub-task":
 		icon.Value = path + "subtask.png"
@@ -73,7 +73,7 @@ func Add(issue *jiradata.Issue, toWorkflow *aw.Workflow) {
 	issueType := defaultIssueType.Name
 	summary := issue.Fields["summary"].(string)
 
-	issueUrlBase := "https://" + GetJiraHostname(toWorkflow) + "/browse/"
+	issueUrlBase := "https://" + GetJiraHostname() + "/browse/"
 
 	toWorkflow.NewItem(fmt.Sprintf("%s · %s · %s", key, status, assignee)).
 		Subtitle(fmt.Sprintf("%s: %s", issueType, summary)).

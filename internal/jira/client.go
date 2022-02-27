@@ -6,21 +6,14 @@ import (
 	"github.com/coryb/oreo"
 	"github.com/go-jira/jira"
 	"github.com/go-jira/jira/jiradata"
-	"gojiralfredo/internal/workflow"
 	"log"
 	"net/http"
+	"strings"
 )
 
-type Consumer struct {
-	*jira.Jira
-}
-
-func (c *Consumer) Search(query *Query) (*jiradata.SearchResults, error) {
-	return c.Jira.Search(query, jira.WithAutoPagination())
-}
-
-type Query struct {
-	*jira.SearchOptions
+type Auth struct {
+	Username string
+	Password string
 }
 
 type debugLogger struct{}
@@ -40,7 +33,7 @@ func (u *urlLogger) RoundTrip(req *http.Request) (res *http.Response, e error) {
 	return u.wrapped.RoundTrip(req)
 }
 
-func BuildClient(auth workflow.Auth, authorize bool, verbose bool) *oreo.Client {
+func BuildClient(auth Auth, authorize bool, verbose bool) *oreo.Client {
 	rawAuth := fmt.Sprintf("%s:%s", auth.Username, auth.Password)
 	encodedAuth := base64.StdEncoding.EncodeToString([]byte(rawAuth))
 	authHeaderVal := fmt.Sprintf("Basic %s", encodedAuth)
@@ -64,8 +57,40 @@ func BuildClient(auth workflow.Auth, authorize bool, verbose bool) *oreo.Client 
 	return client
 }
 
-func BuildQuery() *Query {
-	return &Query{&jira.SearchOptions{}}
+type Query struct {
+	*jira.SearchOptions
+}
+
+func BuildQuery(jql string, fields string, maxResults int) *Query {
+	if fields == "" {
+		fields = strings.Join([]string{
+			"assignee",
+			"created",
+			"priority",
+			"status",
+			"summary",
+			"updated",
+			"issuetype",
+			"resolution",
+		}, ",")
+	}
+	if maxResults == 0 {
+		maxResults = 1000
+	}
+	options := &jira.SearchOptions{
+		Query:       jql,
+		QueryFields: fields,
+		MaxResults:  maxResults,
+	}
+	return &Query{options}
+}
+
+type Consumer struct {
+	*jira.Jira
+}
+
+func (c *Consumer) Search(query *Query) (*jiradata.SearchResults, error) {
+	return c.Jira.Search(query, jira.WithAutoPagination())
 }
 
 func BuildConsumer(endpoint string, client *oreo.Client) *Consumer {

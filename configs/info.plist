@@ -172,7 +172,7 @@
 				<key>runningsubtext</key>
 				<string></string>
 				<key>script</key>
-				<string>./settings "$1"</string>
+				<string>./configure "$1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -197,7 +197,7 @@
 			<key>config</key>
 			<dict>
 				<key>triggerid</key>
-				<string>settings</string>
+				<string>configure</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.trigger.external</string>
@@ -429,7 +429,7 @@ variables={allvars}
 				<key>runningsubtext</key>
 				<string></string>
 				<key>script</key>
-				<string>./search $1 -query "sprint in openSprints() AND project = ${PROJECT}"</string>
+				<string>./list $1 -query "issuetype IN (improvement, task, suggestion, bug, sub-task) AND resolution = unresolved ORDER BY updated ASC"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -565,17 +565,6 @@ variables={allvars}
 			<integer>220</integer>
 		</dict>
 	</dict>
-	<key>variables</key>
-	<dict>
-		<key>USERNAME</key>
-		<string>okay</string>
-	</dict>
-	<key>variablesdontexport</key>
-	<array>
-		<string>Project</string>
-		<string>USERNAME</string>
-		<string>HOSTNAME</string>
-	</array>
 	<key>version</key>
 	<string></string>
 	<key>webaddress</key>

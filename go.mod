@@ -1,4 +1,4 @@
-module gojiralfredo
+module github.com/pghk/alfred-gojira
 
 go 1.14
 
