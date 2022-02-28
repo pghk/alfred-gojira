@@ -80,6 +80,7 @@ func Add(issue *jiradata.Issue, toWorkflow *aw.Workflow) {
 		Match(fmt.Sprintf("%s %s %s %s %s", assignee, issueType, status, summary, key)).
 		Arg(fmt.Sprint(issueUrlBase + key)).
 		Autocomplete(key).
+		Copytext(key).
 		Valid(true).
 		Icon(getIcon(issueType)).
 		UID("")

@@ -10,8 +10,8 @@ import (
 
 func TestAdd(t *testing.T) {
 	type args struct {
-		issue jiradata.Issue
-		toWorkflow    *aw.Workflow
+		issue      jiradata.Issue
+		toWorkflow *aw.Workflow
 	}
 
 	wf := aw.New()
@@ -31,6 +31,9 @@ func TestAdd(t *testing.T) {
 	unassignedIssueJSON := `{
 		  "title": "TEST-1234 · Needs Triage · Unassigned",
           "subtitle": "Bug: No one has fixed this yet",
+		  "text": {
+			  "copy": "TEST-1234"
+		  },
 		  "match": "Unassigned Bug Needs Triage No one has fixed this yet TEST-1234",
   		  "arg": "https://jira.atlassian.com/browse/TEST-1234",
 		  "autocomplete": "TEST-1234",
@@ -59,6 +62,9 @@ func TestAdd(t *testing.T) {
 	assignedIssueJSON := `{
 		  "title": "TEST-5678 · In Progress · Real Person",
           "subtitle": "Task: Someone is working on this task at the moment",
+		  "text": {
+			  "copy": "TEST-5678"
+		  },
 		  "match": "Real Person Task In Progress Someone is working on this task at the moment TEST-5678",
   		  "arg": "https://jira.atlassian.com/browse/TEST-5678",
 		  "autocomplete": "TEST-5678",
