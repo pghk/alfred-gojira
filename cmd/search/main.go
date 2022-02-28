@@ -52,7 +52,7 @@ func setClient(newClient *oreo.Client) {
 }
 
 func setConsumer() {
-	consumer = *jira.BuildConsumer("https://" + hostname, client)
+	consumer = *jira.BuildConsumer("https://"+hostname, client)
 }
 
 func runQuery() (*jiradata.SearchResults, error) {
@@ -64,7 +64,7 @@ func runQuery() (*jiradata.SearchResults, error) {
 		"summary",
 		"updated",
 		"issuetype",
-	},",")
+	}, ",")
 
 	jiraQuery.MaxResults = 100
 
@@ -83,13 +83,15 @@ func parseResults(results *jiradata.SearchResults) {
 }
 
 // Magic Action to enter the "settings" script filter
-type configMagic struct {}
-func (configMagic) Keyword() string {return "config" }
-func (configMagic) Description() string {return "Edit workflow configuration" }
-func (configMagic) RunText() string {return "Config action registered." }
+type configMagic struct{}
+
+func (configMagic) Keyword() string     { return "config" }
+func (configMagic) Description() string { return "Edit workflow configuration" }
+func (configMagic) RunText() string     { return "Config action registered." }
 func (configMagic) Run() error {
 	return wf.Alfred.RunTrigger("settings", "")
 }
+
 var _ aw.MagicAction = configMagic{}
 
 func run() {
@@ -137,7 +139,6 @@ func run() {
 			return
 		}
 	}
-
 
 	parseResults(results)
 

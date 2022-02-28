@@ -10,7 +10,7 @@ import (
 
 func convertType(input interface{}, output interface{}) {
 	var (
-		err error
+		err  error
 		data []byte
 	)
 

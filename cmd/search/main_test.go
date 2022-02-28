@@ -75,12 +75,12 @@ func TestRunQuery(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if got.Total <= 0  {
+	if got.Total <= 0 {
 		t.Errorf("Received %d results", got.Total)
 	}
 
 	fieldChecks := []struct {
-		name string
+		name  string
 		field string
 	}{
 		{"Summary", "summary"},

@@ -18,7 +18,7 @@ type Query struct {
 	*jira.SearchOptions
 }
 
-type Logger struct {}
+type Logger struct{}
 
 func (l *Logger) Printf(format string, args ...interface{}) {
 	fmt.Printf(format, args...)
@@ -45,9 +45,9 @@ func BuildClient(auth workflow.Auth, authorize bool, log bool) *oreo.Client {
 	if authorize {
 		client = client.
 			WithPreCallback(func(req *http.Request) (*http.Request, error) {
-			req.Header.Add("Authorization", authHeaderVal)
-			return req, nil
-		})
+				req.Header.Add("Authorization", authHeaderVal)
+				return req, nil
+			})
 	}
 
 	if log {
