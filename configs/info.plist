@@ -4,6 +4,8 @@
 <dict>
 	<key>bundleid</key>
 	<string>com.pghk.gojira</string>
+	<key>category</key>
+	<string>Productivity</string>
 	<key>connections</key>
 	<dict>
 		<key>0668409F-8CCA-4896-98D7-99CEF0BAB704</key>
@@ -139,11 +141,11 @@
 	<key>createdby</key>
 	<string>Paul Hendrick</string>
 	<key>description</key>
-	<string></string>
+	<string>Quick navigation to Jira issues</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>· Go Jira 🦖</string>
+	<string>Go Jira 🦖</string>
 	<key>objects</key>
 	<array>
 		<dict>
@@ -565,9 +567,14 @@ variables={allvars}
 			<integer>220</integer>
 		</dict>
 	</dict>
+	<key>variablesdontexport</key>
+	<array>
+		<string>USERNAME</string>
+		<string>HOSTNAME</string>
+	</array>
 	<key>version</key>
-	<string></string>
+	<string>0.7.0</string>
 	<key>webaddress</key>
-	<string></string>
+	<string>https://github.com/pghk/alfred-gojira</string>
 </dict>
 </plist>
