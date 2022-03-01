@@ -51,8 +51,9 @@ func runQuery(client *oreo.Client, jiraQuery *jira.Query) (*jiradata.SearchResul
 		if workflow.CredentialsRequired() {
 			credentials := workflow.GetCredentials(openConfigEditor)
 			client = jira.BuildClient(credentials, true, true)
+		} else {
+			client = jira.BuildClient(jira.Auth{}, false, true)
 		}
-		client = jira.BuildClient(jira.Auth{}, false, true)
 	}
 
 	if jiraQuery == nil {

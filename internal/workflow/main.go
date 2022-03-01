@@ -24,7 +24,7 @@ func init() {
 	config = &Configuration{
 		Hostname: "jira.atlassian.com",
 		Username: "",
-		privateHost: false,
+		privateHost: true,
 	}
 }
 
