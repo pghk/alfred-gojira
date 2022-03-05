@@ -12,6 +12,7 @@ type Configuration struct {
 	Hostname    string
 	Username    string
 	Privatehost bool
+	MaxResults int
 }
 
 var (
@@ -25,6 +26,7 @@ func init() {
 		Hostname:    "jira.atlassian.com",
 		Username:    "",
 		Privatehost: true,
+		MaxResults: 100,
 	}
 }
 
@@ -60,6 +62,10 @@ func GetJiraHostname() string {
 
 func GetJiraUsername() string {
 	return config.Username
+}
+
+func GetMaxResultSetting() int {
+	return config.MaxResults
 }
 
 func CredentialsRequired() bool {

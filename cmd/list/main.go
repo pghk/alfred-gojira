@@ -72,7 +72,7 @@ func runQuery(client *oreo.Client, jiraQuery *jira.Query) (*jiradata.SearchResul
 			"issuetype",
 			"resolution",
 		}, ",")
-		jiraQuery = jira.BuildQuery(query, fields, 100)
+		jiraQuery = jira.BuildQuery(query, fields, workflow.GetMaxResultSetting())
 	}
 
 	consumer := *jira.BuildConsumer("https://"+hostname, client)

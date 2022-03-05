@@ -68,6 +68,8 @@ func runGet(key, value string) {
 			varname = "USERNAME"
 		case "private host setting":
 			varname = "PRIVATEHOST"
+		case "max results setting":
+			varname = "MAX_RESULTS"
 		}
 
 		wf.NewItem(fmt.Sprintf("Set %s to “%s”", key, value)).
@@ -116,6 +118,11 @@ func run() {
 		Subtitle("↩ to edit").
 		Valid(true).
 		Var("name", "username")
+
+	wf.NewItem("Max results: "+strconv.Itoa(workflow.GetMaxResultSetting())).
+		Subtitle("↩ to edit").
+		Valid(true).
+		Var("name", "max results setting")
 
 	wf.NewItem("Private host: "+strconv.FormatBool(needCredentials)).
 		Subtitle("↩ to edit").
