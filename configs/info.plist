@@ -431,7 +431,7 @@ variables={allvars}
 				<key>runningsubtext</key>
 				<string></string>
 				<key>script</key>
-				<string>./list $1 -query "issuetype IN (improvement, task, suggestion, bug, sub-task) AND resolution = unresolved ORDER BY updated ASC"</string>
+				<string>./list $1 -query "resolution = unresolved ORDER BY updated ASC"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
