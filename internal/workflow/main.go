@@ -9,9 +9,9 @@ import (
 const ConfigTriggerName = "configure"
 
 type Configuration struct {
-	Hostname string
-	Username string
-	privateHost	 bool
+	Hostname    string
+	Username    string
+	Privatehost bool
 }
 
 var (
@@ -22,14 +22,14 @@ var (
 
 func init() {
 	config = &Configuration{
-		Hostname: "jira.atlassian.com",
-		Username: "",
-		privateHost: true,
+		Hostname:    "jira.atlassian.com",
+		Username:    "",
+		Privatehost: true,
 	}
 }
 
 // The configure action sends the user to the "configure" script filter
-type configure struct{
+type configure struct {
 	aw.MagicAction
 }
 
@@ -54,7 +54,6 @@ func BuildWorkflow(sortOptions []fuzzy.Option) *aw.Workflow {
 	return workflow
 }
 
-
 func GetJiraHostname() string {
 	return config.Hostname
 }
@@ -64,19 +63,18 @@ func GetJiraUsername() string {
 }
 
 func CredentialsRequired() bool {
-	return config.privateHost
+	return config.Privatehost
 }
 
-func GetCredentials(fallback func()) jira.Auth {
+func GetCredentials() (jira.Auth, error) {
 	tokenStorageKey := config.Hostname
 	token, err := workflow.Keychain.Get(tokenStorageKey)
 	if err != nil {
-		fallback()
+		return jira.Auth{}, err
 	}
 
 	return jira.Auth{
 		Username: config.Username,
 		Password: token,
-	}
+	}, nil
 }
-

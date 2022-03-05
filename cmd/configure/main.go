@@ -7,6 +7,7 @@ import (
 	"github.com/pghk/alfred-gojira/internal/workflow"
 	"go.deanishe.net/fuzzy"
 	"log"
+	"strconv"
 )
 
 var (
@@ -29,6 +30,14 @@ func runSet(key, value string) {
 
 	if key == "API_TOKEN" {
 		if err := wf.Keychain.Set(tokenStorageKey, value); err != nil {
+			wf.FatalError(err)
+		}
+	} else if key == "PRIVATEHOST" {
+		_, err := strconv.ParseBool(value)
+		if err != nil {
+			wf.FatalError(err)
+		}
+		if err := wf.Config.Set(key, value, false).Do(); err != nil {
 			wf.FatalError(err)
 		}
 	} else {
@@ -57,6 +66,8 @@ func runGet(key, value string) {
 			varname = "HOSTNAME"
 		case "username":
 			varname = "USERNAME"
+		case "private host setting":
+			varname = "PRIVATEHOST"
 		}
 
 		wf.NewItem(fmt.Sprintf("Set %s to “%s”", key, value)).
@@ -72,6 +83,15 @@ func runGet(key, value string) {
 }
 
 func run() {
+	needCredentials := workflow.CredentialsRequired()
+	haveCredentials := false
+	if needCredentials {
+		_, err := wf.Keychain.Get(tokenStorageKey)
+		if err == nil {
+			haveCredentials = true
+		}
+	}
+
 	wf.Args()
 
 	flag.Parse()
@@ -97,18 +117,26 @@ func run() {
 		Valid(true).
 		Var("name", "username")
 
-	_, err := wf.Keychain.Get(tokenStorageKey)
-	if err != nil {
+	wf.NewItem("Private host: "+strconv.FormatBool(needCredentials)).
+		Subtitle("↩ to edit").
+		Valid(true).
+		Var("name", "private host setting")
+
+	if needCredentials && !haveCredentials {
 		wf.NewItem("API token: not set").
 			Subtitle("↩ to add to Keychain").
 			Valid(true).
 			Var("name", "API token")
-	} else {
+	}
+
+	if haveCredentials {
 		wf.NewItem("API token: set in macOS Keychain").
 			Subtitle("↩ to edit in keychain").
 			Valid(true).
 			Var("name", "API token")
+	}
 
+	if haveCredentials || !needCredentials {
 		wf.NewItem("Search Jira Issues").
 			Subtitle("↩ to use workflow as configured").
 			Valid(true).

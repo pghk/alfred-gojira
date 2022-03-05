@@ -49,10 +49,15 @@ func runQuery(client *oreo.Client, jiraQuery *jira.Query) (*jiradata.SearchResul
 	hostname := workflow.GetJiraHostname()
 	if client == nil {
 		if workflow.CredentialsRequired() {
-			credentials := workflow.GetCredentials(openConfigEditor)
-			client = jira.BuildClient(credentials, true, true)
+			credentials, err := workflow.GetCredentials()
+			if err != nil {
+				openConfigEditor()
+				log.Fatal(err)
+			} else {
+				client = jira.BuildClient(credentials, true, false)
+			}
 		} else {
-			client = jira.BuildClient(jira.Auth{}, false, true)
+			client = jira.BuildClient(jira.Auth{}, false, false)
 		}
 	}
 
@@ -67,7 +72,7 @@ func runQuery(client *oreo.Client, jiraQuery *jira.Query) (*jiradata.SearchResul
 			"issuetype",
 			"resolution",
 		}, ",")
-		jiraQuery = jira.BuildQuery(query, fields, 1000)
+		jiraQuery = jira.BuildQuery(query, fields, 100)
 	}
 
 	consumer := *jira.BuildConsumer("https://"+hostname, client)

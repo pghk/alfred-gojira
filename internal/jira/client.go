@@ -74,9 +74,6 @@ func BuildQuery(jql string, fields string, maxResults int) *Query {
 			"resolution",
 		}, ",")
 	}
-	if maxResults == 0 {
-		maxResults = 1000
-	}
 	options := &jira.SearchOptions{
 		Query:       jql,
 		QueryFields: fields,
