@@ -23,7 +23,7 @@ var (
 
 func init() {
 	config = &Configuration{
-		Hostname:    "",
+		Hostname:    "jira.atlassian.com",
 		Username:    "",
 		Privatehost: true,
 		MaxResults: 100,
