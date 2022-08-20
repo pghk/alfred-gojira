@@ -64,6 +64,8 @@ func runGet(key, value string) {
 			varname = "API_TOKEN"
 		case "hostname":
 			varname = "HOSTNAME"
+		case "projects":
+			varname = "PROJECTS"
 		case "username":
 			varname = "USERNAME"
 		case "private host setting":
@@ -118,6 +120,11 @@ func run() {
 		Subtitle("↩ to edit").
 		Valid(true).
 		Var("name", "username")
+
+	wf.NewItem("Projects: "+workflow.GetProjectString()).
+		Subtitle("↩ to edit").
+		Valid(true).
+		Var("name", "projects")
 
 	wf.NewItem("Max results: "+strconv.Itoa(workflow.GetMaxResultSetting())).
 		Subtitle("↩ to edit").

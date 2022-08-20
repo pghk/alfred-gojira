@@ -6,14 +6,14 @@ Navigate your Jira issues in [Alfred](https://www.alfredapp.com/).
 ## Usage
 - Launch the workflow to view a list of issues obtained according to your configured query
 - Start typing input to filter the list
-- Press enter `↩` to open the url of the highlighed issue in your default browser
-- Press command `⌘` + `c` to copy the key of the highlighed issue
+- Press enter `↩` to open the url of the highlighted issue in your default browser
+- Press command `⌘` + `c` to copy the key of the highlighted issue
 - Type `workflow:config` (with the workflow open) to enter configuration options
 
 ## Configuration
 This workflow provides an external trigger so that it can be launched from a hotkey of your choice without needing to alter the workflow itself. To set this up, in a workflow of your own, create a hotkey trigger or keyword input, and connect it to an external trigger output to Workflow ID `com.pghk.gojira` and Trigger ID `issues`.
 
-When launched for the first time, a list of configuration options will appear. On subsequent launches this can be re-visted via a query of `workflow:config`. You can also edit these options from Alfred's workflow config UI.
+When launched for the first time, a list of configuration options will appear. On subsequent launches this can be re-visited via a query of `workflow:config`. You can also edit these options from Alfred's workflow config UI.
 
 ### Options
 **Hostname**: the base URL of your Jira host, i.e. `jira.atlassian.com`
@@ -21,6 +21,8 @@ When launched for the first time, a list of configuration options will appear. O
 If your Jira host is public (as in the above example), set the **Private Host** variable to `false` or `0`, and you'll be able to proceed to the main workflow without any further setup.
 
 **Username**: this should be your email.
+
+**Projects**: comma-separated list of Jira project keys (i.e. `AB,XY,PROJ`). These will be used to provide fallback issue suggestions, or scope fallback searches.
 
 **API Token**: in order to authenticate to a private Jira host, you must [create an API token](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/) and allow this workflow to use it. This will not be stored in the workflows settings; the workflow expects to find it your macOS keychain (under an "account" value equal to what you provided in the **Hostname** variable, and `com.pghk.gojira` as "name" and "where"). You can place your token in the Keychain Access application yourself, and grant access once Alfred requests it, or you can provide your token to the configuration option to have it placed in the keychain for you.
 

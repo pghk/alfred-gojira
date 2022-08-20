@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"github.com/coryb/oreo"
 	aw "github.com/deanishe/awgo"
 	"github.com/go-jira/jira/jiradata"
@@ -9,8 +10,10 @@ import (
 	"github.com/pghk/alfred-gojira/internal/workflow"
 	"go.deanishe.net/fuzzy"
 	"log"
+	"net/url"
 	"os"
 	"os/exec"
+	"regexp"
 	"strings"
 	"time"
 )
@@ -109,6 +112,53 @@ func parseResults(results *jiradata.SearchResults) {
 	}
 }
 
+func addFallbackItems() {
+	keySubStrings := parseIssueKey(filter)
+	queryIsIssueKey := keySubStrings != nil
+	if queryIsIssueKey {
+		addIssueKeyFallbacks(keySubStrings)
+	} else {
+		addSearchFallback()
+	}
+}
+
+func parseIssueKey(query string) []string {
+	jiraKeyPattern := regexp.MustCompile("([A-Z0-9]+-)?(\\d+)")
+	return jiraKeyPattern.FindStringSubmatch(query)
+}
+
+func addIssueKeyFallbacks(keySubStrings []string) {
+	fullString, projectKey, issueNumber := keySubStrings[0], keySubStrings[1], keySubStrings[2]
+	if projectKey != "" {
+		issueKey := fullString
+		addIssueKeyFallbackItem(issueKey)
+	} else {
+		projectsInScope := workflow.GetProjectList()
+		for _, projectChoice := range projectsInScope {
+			issueKey := fmt.Sprintf("%s-%s", projectChoice, issueNumber)
+			addIssueKeyFallbackItem(issueKey)
+		}
+	}
+}
+
+func addIssueKeyFallbackItem(issueKey string) {
+	issueURL := fmt.Sprintf("https://%s/browse/%s", workflow.GetJiraHostname(), issueKey)
+	wf.NewItem(fmt.Sprintf("Go to issue %s", issueKey)).Subtitle(issueURL).Arg(issueURL).Valid(true)
+}
+
+func addSearchFallback() {
+	searchQuery := fmt.Sprintf("(summary ~ %[1]s OR description ~ %[1]s)", filter)
+	if scope := workflow.GetProjectString(); scope != "" {
+		searchQuery += fmt.Sprintf(" AND project IN (%s)", scope)
+	}
+	searchURL := fmt.Sprintf(
+		"https://%s/issues/?jql=%s",
+		workflow.GetJiraHostname(),
+		url.QueryEscape(searchQuery),
+	)
+	wf.NewItem(fmt.Sprintf("Search issues for %s", searchURL)).Subtitle(searchURL).Arg(searchURL).Valid(true)
+}
+
 func run() {
 	wf.Args()
 	flag.Parse()
@@ -146,6 +196,11 @@ func run() {
 	if filter != "" {
 		wf.Filter(filter)
 	}
+
+	if wf.IsEmpty() {
+		addFallbackItems()
+	}
+
 	wf.SendFeedback()
 }
 

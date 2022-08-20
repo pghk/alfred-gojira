@@ -4,6 +4,7 @@ import (
 	aw "github.com/deanishe/awgo"
 	"github.com/pghk/alfred-gojira/internal/jira"
 	"go.deanishe.net/fuzzy"
+	"strings"
 )
 
 const ConfigTriggerName = "configure"
@@ -11,6 +12,7 @@ const ConfigTriggerName = "configure"
 type Configuration struct {
 	Hostname    string
 	Username    string
+	Projects string
 	Privatehost bool
 	MaxResults int
 }
@@ -25,8 +27,9 @@ func init() {
 	config = &Configuration{
 		Hostname:    "jira.atlassian.com",
 		Username:    "",
+		Projects:    "",
 		Privatehost: true,
-		MaxResults: 100,
+		MaxResults:  100,
 	}
 }
 
@@ -50,7 +53,7 @@ func BuildWorkflow(sortOptions []fuzzy.Option) *aw.Workflow {
 
 	// Update default config from environment variables
 	if err := workflow.Config.To(config); err != nil {
-		panic(err)
+		workflow.FatalError(err)
 	}
 
 	return workflow
@@ -62,6 +65,17 @@ func GetJiraHostname() string {
 
 func GetJiraUsername() string {
 	return config.Username
+}
+
+func GetProjectString() string {
+	return config.Projects
+}
+
+func GetProjectList() []string {
+	if config.Projects == "" {
+		return []string{}
+	}
+	return strings.Split(config.Projects, ",")
 }
 
 func GetMaxResultSetting() int {
